@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">chemistry</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_exam">ExamActivity</string>
+    <string name="outline">一、前言
+教学大纲是编写教材及进行教学活动的依据，它规定着本科的教学目的和要求，课堂讲授和实验教学内容、学时分配等。
+基础化学是高等医学院校的教学计划中的一门基础课。在教学过程中，应注意基础理论，基本知识的讲授，并加强基本技能的训练，为以后的医学专业课奠定基础。
+在教学方式上基本分为理论讲授和实验教学两大部分。通过理论课的讲授，应使学生系统地掌握基础化学科的基本理论和基础知识，通过实验教学使学生掌握有关的化学基本操作机能，培养学生正确观察反应现象，记录和处理实验结果的能力，在整个教学过程中要积极地开发学生的智能，培养学生的自学能力和独立思考、分析和解决问题的能力。
+基础化学课程总学时数为64学时，其中课堂授课学时数为52学时，实验学时数为12学时。
+大纲中划线部分是要求学生掌握的内容，其余部分是属于了解或自学的内容，这部分可由授课教师根据具体情况向学生说明。
+实验在教学中占有重要地位，应努力创造条件达到······(略)</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_outline">OutlineActivity</string>
+</resources>
