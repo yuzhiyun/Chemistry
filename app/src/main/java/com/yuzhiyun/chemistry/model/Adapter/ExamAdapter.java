@@ -1,19 +1,17 @@
-package com.yuzhiyun.chemistry.Adapter;
+package com.yuzhiyun.chemistry.model.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import com.yuzhiyun.chemistry.view.fragment.aFragment;
 
 import java.util.ArrayList;
 
 /**
  * Created by yuzhiyun on 2016-07-10.
  */
-public class examAdapter extends FragmentPagerAdapter {
+public class ExamAdapter extends FragmentPagerAdapter {
     ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
-    public examAdapter(FragmentManager fm,ArrayList<Fragment> fragmentArrayList) {
+    public ExamAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList) {
         super(fm);
         this.fragmentArrayList=fragmentArrayList;
     }

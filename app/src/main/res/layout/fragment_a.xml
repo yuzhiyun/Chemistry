@@ -1,15 +1,63 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.yuzhiyun.chemistry.view.fragment.aFragment">
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragment.ExercisesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tvContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:text="题目"
         android:textColor="@color/text_color"
-        android:text="@string/hello_blank_fragment" />
+        android:textSize="30dp" />
 
-</FrameLayout>
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/tvAnswer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A、"
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvAnswer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="B、"
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvAnswer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="C、"
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvAnswer4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="D、"
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnShowAnswer"
+        android:text="显示答案"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textColor="@color/white"
+        android:background="@color/primary"
+        android:layout_gravity="center_horizontal|bottom"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

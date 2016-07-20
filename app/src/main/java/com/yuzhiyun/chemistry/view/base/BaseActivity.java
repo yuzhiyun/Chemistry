@@ -32,10 +32,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 //        进行其他初始化操作
         initOther();
-
     }
-    protected abstract  void setLayoutView() ;
-    protected abstract  void findView() ;
+    protected abstract  void setLayoutView();
+    protected abstract  void findView();
     protected abstract void setListener();
     protected abstract void initOther();
 

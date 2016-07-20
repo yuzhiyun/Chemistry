@@ -2,7 +2,7 @@ package com.yuzhiyun.chemistry.controller;
 
 import android.support.v4.app.Fragment;
 
-import com.yuzhiyun.chemistry.view.fragment.aFragment;
+import com.yuzhiyun.chemistry.view.fragment.ExercisesFragment;
 
 import java.util.ArrayList;
 
@@ -13,9 +13,11 @@ public class ExamActivityController {
     ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
 
     public ExamActivityController() {
-        fragmentArrayList.add(new aFragment(0));
-        fragmentArrayList.add(new aFragment(1));
-        fragmentArrayList.add(new aFragment(2));
+
+        fragmentArrayList.add(new ExercisesFragment(0));
+        fragmentArrayList.add(new ExercisesFragment(1));
+        fragmentArrayList.add(new ExercisesFragment(2));
+        fragmentArrayList.add(new ExercisesFragment(3));
     }
 
     public ArrayList<Fragment> getFragmentArrayList() {

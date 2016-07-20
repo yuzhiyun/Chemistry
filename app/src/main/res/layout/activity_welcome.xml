@@ -5,34 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.yuzhiyun.chemistry.view.activity.ExamActivity">
+    android:background="@drawable/welcome"
+    tools:context="com.yuzhiyun.chemistry.view.activity.WelcomeActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
-            <TextView
-                android:text="章节"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                android:gravity="center"
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                />
-        </android.support.v7.widget.Toolbar>
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:id="@+id/iv_welcome_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/welcome_logo"
+        android:layout_gravity="center_vertical|center_horizontal"/>
 
-    <include layout="@layout/content_exam" />
+
 
 
 </android.support.design.widget.CoordinatorLayout>
