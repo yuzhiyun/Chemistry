@@ -21,7 +21,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             >
             <TextView
-                android:text="章节"
+                android:text="题型"
                 android:textColor="@color/white"
                 android:textSize="25dp"
                 android:gravity="center"

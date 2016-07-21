@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.entity.Exercise;
+import com.yuzhiyun.chemistry.model.entity.NoChoiceExercise;
+import com.yuzhiyun.chemistry.model.util.CONSTANT;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,22 +31,33 @@ public class db {
     static String DB_PATH = "/data/data/com.yuzhiyun.chemistry/databases/";
     static String DB_NAME = "sqlite3.db";
 //    static String DB_NAME = "sqlite.db";
-    //选择题表名
-    String TABLE_CHOICE="choiceQuestion";
     private SQLiteDatabase db;
+    //选择题list
     ArrayList<Exercise> arrayList=new ArrayList() ;
+    //其他三种题型的list
+    ArrayList<NoChoiceExercise> NoChoiceExerciseList=new ArrayList() ;
     public db() {
         this.db = SQLiteDatabase.openDatabase(DB_PATH+DB_NAME,null,SQLiteDatabase.OPEN_READWRITE);
-
-//        arrayList.add(new Exercise(1,"Activity的生命周期是哪些？","onCreate","onRestart","onResume","onDestroy",1));
-//        arrayList.add(new Exercise(2,"别vndu大部分的白癜风","5346","3654","46456","645 东莞东64576",2));
-//        arrayList.add(new Exercise(3,"大概后天发回复","呃呃呃6","3654","46456","人人",3));
-//        arrayList.add(new Exercise(4,"第三个非官方","呃呃呃6","人","46456","二哥",4));
     }
+    /**********************************************************************************************
+     * 作用：从数据库中按条件获取到题目list
+     * 参数：
+     *      chapter 章
+     *      type   题型
+     * 返回值：
+     *      arrayList 选择题List
+     * *******************************************************************************************/
 
 
-    public ArrayList<Exercise> getContentList(){
-        Cursor cursor = db.rawQuery("select * from "+TABLE_CHOICE,null);
+
+    /**********************************************************************************************
+     * 作用：从数据库获取指定章的选择题
+     * 参数：
+     *      chapter 章
+     * 返回值：无
+     * *******************************************************************************************/
+    public ArrayList<Exercise> getChoiceList(int chapter){
+        Cursor cursor = db.rawQuery("select * from "+ CONSTANT.table[0]+" where "+table.CHAPTER+"= "+chapter,null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             int count = cursor.getCount();
@@ -105,5 +118,33 @@ public class db {
             Log.i("db","数据库复制成功");
         }
          Log.i("db","数据库文件已经存在吗？ "+(new File(DB_PATH,DB_NAME).exists()));
+    }
+    /**********************************************************************************************
+     * 作用：从数据库获取指定章和除去选择题题型的题目list
+     * 参数：
+     *      type    题型
+     *      chapter 章
+     * 返回值：无
+     * *******************************************************************************************/
+
+    public  ArrayList<NoChoiceExercise> getList(int type, int chapter) {
+        Cursor cursor = db.rawQuery("select * from "+CONSTANT.table[type]+" where "+table.CHAPTER+"= "+chapter,null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int count = cursor.getCount();
+            for (int i = 0; i < count; i++) {
+                cursor.moveToPosition(i);
+                NoChoiceExercise list_data = new NoChoiceExercise();
+//                cursor.
+                list_data.setQuestion(cursor.getString(cursor.getColumnIndex(table.QUESTION)));
+                list_data.setAnswer(cursor.getString(cursor.getColumnIndex(table.ANSWER)));
+                NoChoiceExerciseList.add(list_data);
+                Log.i("db cursor", "question: " + cursor.getString(cursor.getColumnIndex(table.QUESTION))
+                        + "answer: " + cursor.getString(cursor.getColumnIndex(table.ANSWER)));
+                Log.i("db", "数据库内容 ---"+list_data.getQuestion() + "题目");
+            }
+        }
+        return NoChoiceExerciseList;
     }
 }

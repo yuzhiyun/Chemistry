@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragment.ExercisesFragment">
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="题目"
+        android:textColor="@color/text_color"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/tvAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解答："
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
+
+
+
+    <Button
+        android:id="@+id/btnShowAnswer"
+        android:text="显示答案"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textColor="@color/white"
+        android:background="@color/primary"
+        android:layout_gravity="center_horizontal|bottom"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

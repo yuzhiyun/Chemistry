@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.model.util.CONSTANT;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -17,9 +18,10 @@ public class TypeActivity extends BaseActivity implements AdapterView.OnItemClic
 
 
     ListView listView;
-    String[] data = {"选择题", "名词解释题", "简答题", "计算题"};
+
     ArrayAdapter<String> adapter;
     String KEY_TYPE = "type";
+    String KEY_CHAPTER="Chapter";
     Intent intent;
 
     @Override
@@ -39,7 +41,7 @@ public class TypeActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     protected void initOther() {
-        adapter = new ArrayAdapter<String>(TypeActivity.this, android.R.layout.simple_list_item_1, data);
+        adapter = new ArrayAdapter<String>(TypeActivity.this, android.R.layout.simple_list_item_1, CONSTANT.data);
         listView.setAdapter(adapter);
         intent = new Intent(TypeActivity.this, ExamActivity.class);
     }
@@ -51,7 +53,10 @@ public class TypeActivity extends BaseActivity implements AdapterView.OnItemClic
 
     void startActivity(int position) {
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_TYPE, data[position]);
+        //题型
+        bundle.putInt(KEY_TYPE, position);
+        //从ChapterActivity传递过来的章数继续传递给下一个Activity
+        bundle.putInt(KEY_CHAPTER,getIntent().getExtras().getInt(KEY_CHAPTER,0));
         intent.putExtras(bundle);
         startActivity(intent);
     }

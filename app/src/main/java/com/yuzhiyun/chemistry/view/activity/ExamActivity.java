@@ -3,7 +3,12 @@ package com.yuzhiyun.chemistry.view.activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.yuzhiyun.chemistry.model.Adapter.ExamAdapter;
@@ -18,7 +23,7 @@ public class ExamActivity extends BaseActivity {
     private ViewPager pager;
     private PagerAdapter pagerAdapter;
     private ExamActivityController examActivityController;
-
+    Bundle data;
 
 
     @Override
@@ -34,18 +39,53 @@ public class ExamActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case android.R.id.home:
+                        finish();
+                        Log.i("setNavigation", "finish");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case android.R.id.home:
+                        Toast.makeText(context,"finish",Toast.LENGTH_LONG).show();
+                        Log.i("setOnMenuItem","finish");
+                        finish();
+                        break;
+//                    case R.id.action_settings:
+//                        Toast.makeText(Setting.this, "action_settings", 0).show();
+//                        break;
+//                    case R.id.action_share:
+//                        Toast.makeText(Setting.this, "action_share", 0).show();
+//                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
     protected void initOther() {
+
 //        toolbar.setLogo(R.drawable.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        Bundle data = getIntent().getExtras();
+         data = getIntent().getExtras();
         //获取章的名称
+        int num=data.getInt(KEY_CHAPTER)+1;
         if(data!=null)
-            tvTitle.setText(data.getString(KEY_CHAPTER));
+            tvTitle.setText("第"+num+"章");
         else
             tvTitle.setText("未获取到章节信息");
 //        toolbar.setTitle(data.getString(KEY_CHAPTER));
@@ -53,8 +93,13 @@ public class ExamActivity extends BaseActivity {
     }
 
     public PagerAdapter getPagerAdapter() {
-        examActivityController=new ExamActivityController();
+//        传递题型、章进去
+        int chapter=data.getInt(KEY_CHAPTER);
+        int type=data.getInt(KEY_TYPE);
+        Log.i(" 传递题型、章",chapter+"  "+type);
+        examActivityController=new ExamActivityController(chapter,type);
         pagerAdapter=new ExamAdapter(getSupportFragmentManager(),examActivityController.getFragmentArrayList());
         return pagerAdapter;
     }
+
 }

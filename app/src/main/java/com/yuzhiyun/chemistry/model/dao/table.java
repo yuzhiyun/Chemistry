@@ -15,5 +15,7 @@ public  class table {
     public static String ANSWER4="answer4";
     public static String RIGHT_ANSWER="rightAnswer";
 
+    public static String ANSWER="answer";
+
 
 }

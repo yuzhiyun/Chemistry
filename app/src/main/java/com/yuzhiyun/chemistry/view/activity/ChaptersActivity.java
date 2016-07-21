@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.model.util.CONSTANT;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 public class ChaptersActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -18,15 +19,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
     private ArrayAdapter<String> chapterAdapter;
     Intent intent;
     //数据源
-    String[] array_data = {
-            "第一章 电解质溶液",
-            "第二章 缓冲溶液",
-            "第三章 酸碱滴定法",
-            "第四章 化学反应热及化学反应的方向及限度",
-            "第五章 化学反应速率",
-            "第六章 氧化还原及电极电位",
-            "第七章 原子结构与原子周期律",
-    };
+
     String KEY_CHAPTER="Chapter";
     @Override
     protected void setLayoutView() {
@@ -46,7 +39,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     protected void initOther() {
-        chapterAdapter = new ArrayAdapter<String>(ChaptersActivity.this, android.R.layout.simple_list_item_1, array_data);
+        chapterAdapter = new ArrayAdapter<String>(ChaptersActivity.this, android.R.layout.simple_list_item_1, CONSTANT.array_data);
         listView.setAdapter(chapterAdapter);
         intent=new Intent(ChaptersActivity.this,TypeActivity.class);
         tvTitle.setText("选择章节");
@@ -58,7 +51,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
     }
     void startActivity(int position){
         Bundle bundle=new Bundle();
-        bundle.putString(KEY_CHAPTER, array_data[position]);
+        bundle.putInt(KEY_CHAPTER, position);
         intent.putExtras(bundle);
         startActivity(intent);
     }

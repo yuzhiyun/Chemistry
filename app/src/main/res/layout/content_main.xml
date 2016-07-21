@@ -37,5 +37,10 @@
         android:layout_gravity="center"
         android:background="@color/primary"
          />
+    <TextView
+
+        android:id="@+id/tvTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

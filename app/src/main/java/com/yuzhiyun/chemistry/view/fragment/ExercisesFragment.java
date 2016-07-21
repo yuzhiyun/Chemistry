@@ -22,8 +22,9 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class ExercisesFragment extends Fragment implements View.OnClickListener{
-    public String TAG = "aFragment";
+    public String TAG = "ExercisesFragment";
     int position;
+    int chapter;
     public TextView tvContent;
     public TextView tvAnswer1;
     public TextView tvAnswer2;
@@ -35,9 +36,10 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
-    public ExercisesFragment(int position) {
+    public ExercisesFragment(int position ,int chapter) {
         super();
         this.position = position;
+        this.chapter = chapter;
     }
 
 
@@ -81,15 +83,15 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
 
     private void initView() {
         db database=new db();
-        ArrayList<Exercise> exerciseArrayList=database.getContentList();
+        ArrayList<Exercise> exerciseArrayList=database.getChoiceList(chapter+1);
         Log.i("exerciseArrayList的size=",exerciseArrayList.size()+"");
         exercise=exerciseArrayList.get(position);
         Log.i("exercise",exercise.getQuestion()+"");
-        tvContent.setText(position+1+"、 "+exercise.getQuestion());
-        tvAnswer1.setText(tvAnswer1.getText()+exercise.getAnswer1());
-        tvAnswer2.setText(tvAnswer2.getText()+exercise.getAnswer2());
-        tvAnswer3.setText(tvAnswer3.getText()+exercise.getAnswer3());
-        tvAnswer4.setText(tvAnswer4.getText()+exercise.getAnswer4());
+        tvContent.setText(position + 1 + "、 " + exercise.getQuestion());
+        tvAnswer1.setText("A、"+exercise.getAnswer1());
+        tvAnswer2.setText("B、"+exercise.getAnswer2());
+        tvAnswer3.setText("C、"+exercise.getAnswer3());
+        tvAnswer4.setText("D、"+exercise.getAnswer4());
 //        Log.e("答案initView", exercise.getRightAnswer() + " --答案");
     }
 
@@ -97,7 +99,7 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnShowAnswer:
-                exercise=new db().getContentList().get(position);
+                exercise=new db().getChoiceList(chapter).get(position);
                 int rightAnswer=exercise.getRightAnswer();
 //                Log.e("答案",rightAnswer+" --答案");
                 switch (rightAnswer){
