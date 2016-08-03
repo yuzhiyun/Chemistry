@@ -1,11 +1,15 @@
 package com.yuzhiyun.chemistry.view.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.dao.db;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
@@ -15,9 +19,37 @@ public class WelcomeActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            if (App.getInstance().getCurrentUser() == null)
+                startActivity(new Intent(WelcomeActivity.this, LoginRegisterActivity.class));
+            else
+                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("welcomeActivity","onDestroy");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("welcomeActivity", "onRestart");
+        finish();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        Log.i("welcomeActivity", "onCreate");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("welcomeActivity", "onResume");
+    }
 
     @Override
     protected void setLayoutView() {

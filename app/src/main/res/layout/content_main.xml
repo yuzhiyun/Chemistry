@@ -13,7 +13,13 @@
     tools:context=".view.activity.MainActivity"
 
     tools:showIn="@layout/activity_main">
-
+    <TextView
+        android:layout_gravity="bottom"
+        android:id="@+id/tvUser"
+        android:textSize="16dp"
+        android:text="登录者："
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,10 +43,28 @@
         android:layout_gravity="center"
         android:background="@color/primary"
          />
-    <TextView
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换账户"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:id="@+id/btnSwitchAccount"
+        android:layout_gravity="center"
+        android:background="@color/primary"
+        />
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:id="@+id/btnTest"
+        android:layout_gravity="center"
+        android:background="@color/primary"
+        />
 
-        android:id="@+id/tvTest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

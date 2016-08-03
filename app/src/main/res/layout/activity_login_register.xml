@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/back"
-    tools:context="com.yuzhiyun.chemistry.view.activity.WelcomeActivity">
+    tools:context="com.yuzhiyun.chemistry.view.activity.LoginRegisterActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
+            android:visibility="gone"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -22,13 +21,8 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-    <ImageView
-        android:id="@+id/iv_welcome_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/welcome_logo"
-        android:layout_gravity="center_vertical|center_horizontal"/>
 
+    <include layout="@layout/content_login_register" />
 
 
 

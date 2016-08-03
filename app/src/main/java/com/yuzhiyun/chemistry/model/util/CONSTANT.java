@@ -27,4 +27,5 @@ public class CONSTANT {
             "nounExplanationQuestion",
             "briefAnswerQuestion",
             "calculateQuestion"};
+    public static String BMOB_APP_ID="a1a600ee66c4e8af2871fdbe17cf881b";
 }

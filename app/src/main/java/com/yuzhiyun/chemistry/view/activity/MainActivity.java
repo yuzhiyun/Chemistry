@@ -7,14 +7,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.yuzhiyun.chemistry.R;
-import com.yuzhiyun.chemistry.model.dao.db;
+import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     Button btnExam;
     Button btnAbout;
-TextView tvTest;
+    Button btnSwitchAccount;
+    Button btnTest;
+    TextView tvUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,21 +31,25 @@ TextView tvTest;
     protected void findView() {
         btnExam= (Button) findViewById(R.id.btnExam);
         btnAbout= (Button) findViewById(R.id.btnAbout);
-        tvTest= (TextView) findViewById(R.id.tvTest);
+        btnSwitchAccount= (Button) findViewById(R.id.btnSwitchAccount);
+        btnTest= (Button) findViewById(R.id.btnTest);
+
+        tvUser= (TextView) findViewById(R.id.tvUser);
 
     }
 
     @Override
     protected void setListener() {
         btnExam.setOnClickListener(this);
+        btnSwitchAccount.setOnClickListener(this);
         btnAbout.setOnClickListener(this);
+        btnTest.setOnClickListener(this);
     }
 
     @Override
     protected void initOther() {
         toolbar.setTitle("习题宝典");
-        //空格\t,换行\n
-        tvTest.setText("第一行\n\t\t\t第二行\n\t\t\t\t\t\t第三行");
+        tvUser.setText("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
     }
 
     @Override
@@ -55,6 +61,14 @@ TextView tvTest;
             case R.id.btnAbout:
                 startActivity(new Intent(context,OutlineActivity.class));
                 break;
+            case R.id.btnSwitchAccount:
+                startActivity(new Intent(context,LoginRegisterActivity.class));
+                break;
+            case R.id.btnTest:
+                startActivity(new Intent(context,TestActivity.class));
+                break;
+
+
         }
     }
 }

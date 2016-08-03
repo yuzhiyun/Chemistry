@@ -99,7 +99,7 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnShowAnswer:
-                exercise=new db().getChoiceList(chapter).get(position);
+                exercise=new db().getChoiceList(chapter+1).get(position);
                 int rightAnswer=exercise.getRightAnswer();
 //                Log.e("答案",rightAnswer+" --答案");
                 switch (rightAnswer){

@@ -1,105 +1,172 @@
 package com.yuzhiyun.chemistry.view.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-import com.yuzhiyun.chemistry.model.Adapter.ExamAdapter;
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.controller.ExamActivityController;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
+import com.yuzhiyun.chemistry.model.Adapter.ExamAdapter;
+import com.yuzhiyun.chemistry.model.util.CONSTANT;
 
-public class ExamActivity extends BaseActivity {
-    String KEY_CHAPTER="Chapter";
-    String KEY_TYPE="type";
+import cn.bmob.v3.Bmob;
+
+public class ExamActivity extends AppCompatActivity {
+
+    public Toolbar toolbar;
+    private static final int MESSAGE_WHAT = 100;
+    String KEY_CHAPTER = "Chapter";
+    String KEY_TYPE = "type";
     TextView tvTitle;
     private ViewPager pager;
     private PagerAdapter pagerAdapter;
     private ExamActivityController examActivityController;
     Bundle data;
+    // 做题时间
+    private long exerciseTimer = 0;
+    // 开始时间
+    private long startTimer = 0;
+    //
+    private long tempTime = 0;
 
+    private Thread thread;
+
+    //更新做题时间到tvTitle
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+//            switch (msg.what) {
+//                case MESSAGE_WHAT:
+            tvTitle.setText(getFormatTime(exerciseTimer));
+//                    break;
+//            }
+
+        }
+    };
 
     @Override
-    protected void setLayoutView() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setLayoutView();
+        Bmob.initialize(this, CONSTANT.BMOB_APP_ID);
+        initToolBar();
+        findView();
+        setListener();
+        initOther();
+        initTimer();
+    }
+
+    void initToolBar() {
+        //由于在下习惯在activity中使用toolbar，所以在此处处理了一下，请注意，继承这个BaseActivity的时候，布局文件一定要加上toolbar,不然空指针异常
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //之所以设置为“”，是因为我们通常需要把toolbar的title居中显示，由于没有函数直接居中显示，所以把title设置为空字符串，然后有必要的话再在布局文件的toolbar中添加一个居中显示的textView即可
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+    }
+
+    void setLayoutView() {
         setContentView(R.layout.activity_exam);
     }
 
-    @Override
-    protected void findView() {
-        pager= (ViewPager) findViewById(R.id.pager);
-        tvTitle= (TextView) findViewById(R.id.tvTitle);
+    void findView() {
+        pager = (ViewPager) findViewById(R.id.pager);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
     }
 
-    @Override
-    protected void setListener() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case android.R.id.home:
-                        finish();
-                        Log.i("setNavigation", "finish");
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case android.R.id.home:
-                        Toast.makeText(context,"finish",Toast.LENGTH_LONG).show();
-                        Log.i("setOnMenuItem","finish");
-                        finish();
-                        break;
-//                    case R.id.action_settings:
-//                        Toast.makeText(Setting.this, "action_settings", 0).show();
-//                        break;
-//                    case R.id.action_share:
-//                        Toast.makeText(Setting.this, "action_share", 0).show();
-//                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
+    void setListener() {
     }
 
-    @Override
-    protected void initOther() {
+
+    void initOther() {
+
 
 //        toolbar.setLogo(R.drawable.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-         data = getIntent().getExtras();
+        data = getIntent().getExtras();
         //获取章的名称
-        int num=data.getInt(KEY_CHAPTER)+1;
-        if(data!=null)
-            tvTitle.setText("第"+num+"章");
+        int num = data.getInt(KEY_CHAPTER) + 1;
+        if (data != null)
+            tvTitle.setText("第" + num + "章");
         else
             tvTitle.setText("未获取到章节信息");
 //        toolbar.setTitle(data.getString(KEY_CHAPTER));
         pager.setAdapter(getPagerAdapter());
     }
 
+    /**
+     * 开始计时
+     */
+    private void initTimer() {
+        //当前时间
+        startTimer = System.currentTimeMillis();
+        Log.i("ExamActivity", "onCreate");
+        if (null == thread) {
+            thread = new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    Log.i("ExamActivity", "run");
+                    while (true) {
+                        try {
+                            sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        exerciseTimer = System.currentTimeMillis() - startTimer;
+                        Log.i("ExamActivity", "做题时间" + exerciseTimer);
+                        handler.sendEmptyMessage(MESSAGE_WHAT);
+                    }
+
+
+                }
+            };
+            thread.start();
+        }
+    }
+
     public PagerAdapter getPagerAdapter() {
 //        传递题型、章进去
-        int chapter=data.getInt(KEY_CHAPTER);
-        int type=data.getInt(KEY_TYPE);
-        Log.i(" 传递题型、章",chapter+"  "+type);
-        examActivityController=new ExamActivityController(chapter,type);
-        pagerAdapter=new ExamAdapter(getSupportFragmentManager(),examActivityController.getFragmentArrayList());
+        int chapter = data.getInt(KEY_CHAPTER);
+        int type = data.getInt(KEY_TYPE);
+        Log.i(" 传递题型、章", chapter + "  " + type);
+        examActivityController = new ExamActivityController(chapter, type);
+        pagerAdapter = new ExamAdapter(getSupportFragmentManager(), examActivityController.getFragmentArrayList());
         return pagerAdapter;
     }
 
+    /**
+     * 得到一个格式化的时间
+     *
+     * @param time 时间 毫秒
+     * @return 时：分：秒：毫秒
+     */
+    private String getFormatTime(long time) {
+        time = time / 1000;
+        long second = time % 60;
+        long minute = (time % 3600) / 60;
+        long hour = time / 3600;
+
+        // 毫秒秒显示两位
+        // String strMillisecond = "" + (millisecond / 10);
+        // 秒显示两位
+        String strSecond = ("00" + second)
+                .substring(("00" + second).length() - 2);
+        // 分显示两位
+        String strMinute = ("00" + minute)
+                .substring(("00" + minute).length() - 2);
+        // 时显示两位
+        String strHour = ("00" + hour).substring(("00" + hour).length() - 2);
+
+        return strHour + ":" + strMinute + ":" + strSecond;
+        // + strMillisecond;
+    }
 }

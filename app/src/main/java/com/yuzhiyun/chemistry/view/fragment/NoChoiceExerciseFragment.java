@@ -69,11 +69,17 @@ public class NoChoiceExerciseFragment extends Fragment {
 
     private void initView() {
         db database=new db();
-        ArrayList<NoChoiceExercise> exerciseArrayList=database.getList(type,chapter+1);
+        ArrayList<NoChoiceExercise> exerciseArrayList=database.getList(type, chapter + 1);
         Log.i("exerciseArrayList的size=",exerciseArrayList.size()+"");
         noChoiceExercise=exerciseArrayList.get(position);
-        tvQuestion.setText(position + 1 + "、 " + noChoiceExercise.getQuestion());
-        tvAnswer.setText(""+noChoiceExercise.getAnswer());
+        String a=noChoiceExercise.getQuestion();
+        tvQuestion.setText(position + 1 + "、 " + a);
+        String b=noChoiceExercise.getAnswer().replace("\\n","\n").replace("\\t","\t");
+//数据库中的数据应该先写\n再写\t
+        tvAnswer.setText(""+b);
+        String c="name\\nname";
+        Log.i("检测c",c);
+        Log.i("检测c",c.replace("\\n","\n"));
     }
 
     private void findView(View view) {

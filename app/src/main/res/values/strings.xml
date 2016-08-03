@@ -15,4 +15,7 @@
     <string name="title_activity_outline">OutlineActivity</string>
     <string name="title_activity_chapters">ChaptersActivity</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login_register">LoginRegisterActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
