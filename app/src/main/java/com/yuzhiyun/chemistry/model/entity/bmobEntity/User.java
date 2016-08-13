@@ -1,4 +1,4 @@
-package com.yuzhiyun.chemistry.model.entity;
+package com.yuzhiyun.chemistry.model.entity.bmobEntity;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobRelation;
@@ -7,16 +7,17 @@ import cn.bmob.v3.datatype.BmobRelation;
  * Created by yuzhiyun on 2016-07-26.
  */
 public class User extends BmobUser {
-    BmobRelation time ;
+    //关联Record
+    BmobRelation relationRecord ;
     //由于bmob的密码不可见，所以我在这里新加一个字段，用于查看密码，以防有人忘记密码
     String pwd;
 
-    public BmobRelation getTime() {
-        return time;
+    public BmobRelation getRelationRecord() {
+        return relationRecord;
     }
 
-    public void setTime(BmobRelation time) {
-        this.time = time;
+    public void setRelationRecord(BmobRelation relationRecord) {
+        this.relationRecord = relationRecord;
     }
 
     public String getPwd() {

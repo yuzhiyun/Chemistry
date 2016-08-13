@@ -7,9 +7,8 @@ package com.yuzhiyun.chemistry.model.proxy;
 import android.content.Context;
 import android.util.Log;
 
-import com.yuzhiyun.chemistry.model.entity.User;
+import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
 
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
 

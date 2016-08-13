@@ -1,5 +1,9 @@
 package com.yuzhiyun.chemistry.model.util;
 
+import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
+
+import java.util.List;
+
 /**
  * Created by yuzhiyun on 2016-07-21.
  */
@@ -28,4 +32,5 @@ public class CONSTANT {
             "briefAnswerQuestion",
             "calculateQuestion"};
     public static String BMOB_APP_ID="a1a600ee66c4e8af2871fdbe17cf881b";
+    public static List<User> userList;
 }

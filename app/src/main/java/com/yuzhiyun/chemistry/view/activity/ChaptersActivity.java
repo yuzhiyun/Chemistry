@@ -28,7 +28,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     protected void findView() {
-        listView = (ListView) findViewById(R.id.listView);
+        listView= (ListView) findViewById(R.id.listView);
         tvTitle= (TextView) findViewById(R.id.tvTitle);
     }
 

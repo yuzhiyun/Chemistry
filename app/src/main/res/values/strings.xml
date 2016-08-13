@@ -18,4 +18,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_login_register">LoginRegisterActivity</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_data">DataActivity</string>
+    <string name="title_activity_user_list">UserListActivity</string>
 </resources>

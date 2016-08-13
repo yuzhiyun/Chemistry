@@ -13,12 +13,21 @@ import android.widget.TextView;
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.controller.ExamActivityController;
 import com.yuzhiyun.chemistry.model.Adapter.ExamAdapter;
+import com.yuzhiyun.chemistry.model.Application.App;
+import com.yuzhiyun.chemistry.model.entity.bmobEntity.Record;
+import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
 import com.yuzhiyun.chemistry.model.util.CONSTANT;
+import com.yuzhiyun.chemistry.model.util.toast;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.datatype.BmobRelation;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class ExamActivity extends AppCompatActivity {
 
+    //做题时间记录
+    Record record;
     public Toolbar toolbar;
     private static final int MESSAGE_WHAT = 100;
     String KEY_CHAPTER = "Chapter";
@@ -61,6 +70,7 @@ public class ExamActivity extends AppCompatActivity {
         setListener();
         initOther();
         initTimer();
+
     }
 
     void initToolBar() {
@@ -85,7 +95,7 @@ public class ExamActivity extends AppCompatActivity {
 
 
     void initOther() {
-
+        record=new Record();
 
 //        toolbar.setLogo(R.drawable.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -107,6 +117,8 @@ public class ExamActivity extends AppCompatActivity {
     private void initTimer() {
         //当前时间
         startTimer = System.currentTimeMillis();
+        //记录初始时间
+        record.setStartTime(startTimer);
         Log.i("ExamActivity", "onCreate");
         if (null == thread) {
             thread = new Thread() {
@@ -168,5 +180,45 @@ public class ExamActivity extends AppCompatActivity {
 
         return strHour + ":" + strMinute + ":" + strSecond;
         // + strMillisecond;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        record.setEndTime(System.currentTimeMillis());
+        record.setTimeSpan(System.currentTimeMillis() - startTimer);
+        record.setUser(App.getInstance().getCurrentUser());
+        record.save(ExamActivity.this, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                 User user=App.getInstance().getCurrentUser();
+                toast.ShowText("数据记录成功"+record.getUser().getUsername(),ExamActivity.this);
+                //更新user表，添加一个relation
+                BmobRelation relationRecord = new BmobRelation();
+                relationRecord.add(record);
+                user.setRelationRecord(relationRecord);
+                user.update(ExamActivity.this, new UpdateListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+
+                    }
+                });
+
+
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                toast.ShowText("数据记录失败 "+s,ExamActivity.this);
+                Log.e("onFailure","数据记录失败 "+s);
+            }
+        });
     }
 }

@@ -1,12 +1,10 @@
 package com.yuzhiyun.chemistry.model.Application;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
-import com.yuzhiyun.chemistry.model.entity.User;
+import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 
 /**

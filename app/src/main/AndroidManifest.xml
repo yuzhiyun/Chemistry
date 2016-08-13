@@ -52,14 +52,24 @@
         <activity
             android:name=".view.activity.LoginRegisterActivity"
             android:label="@string/title_activity_login_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
+        <!-- <activity -->
+        <!-- android:name=".view.activity.TestActivity" -->
+        <!-- android:label="@string/title_activity_test" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
-            android:name=".view.activity.TestActivity"
-            android:label="@string/title_activity_test"
+            android:name=".view.activity.DataActivity"
+            android:label="@string/title_activity_data"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".view.activity.UserListActivity"
+            android:label="@string/title_activity_user_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
