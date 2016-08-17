@@ -76,6 +76,16 @@
         android:layout_gravity="center"
         android:background="@color/primary"
         />
-
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关于作者"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:id="@+id/btnAboutme"
+        android:layout_gravity="center"
+        android:background="@color/primary"
+        />
 
 </LinearLayout>

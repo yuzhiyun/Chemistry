@@ -15,8 +15,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     Button btnExam;
     Button btnAbout;
     Button btnSwitchAccount;
-//    Button btnTest;
+    //    Button btnTest;
     Button btnAdmin;
+    Button btnAboutme;
     TextView tvUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         btnSwitchAccount= (Button) findViewById(R.id.btnSwitchAccount);
 //        btnTest= (Button) findViewById(R.id.btnTest);
         btnAdmin= (Button) findViewById(R.id.btnAdmin);
+        btnAboutme= (Button) findViewById(R.id.btnAboutme);
 
         tvUser= (TextView) findViewById(R.id.tvUser);
 
@@ -47,6 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         btnAbout.setOnClickListener(this);
 //        btnTest.setOnClickListener(this);
         btnAdmin.setOnClickListener(this);
+        btnAboutme.setOnClickListener(this);
     }
 
     @Override
@@ -72,6 +75,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 //                break;
             case R.id.btnAdmin:
                 startActivity(new Intent(context,UserListActivity.class));
+                break;
+            case R.id.btnAboutme:
+                startActivity(new Intent(context,CopyrightActivity.class));
                 break;
 
 

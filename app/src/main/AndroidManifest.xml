@@ -65,6 +65,11 @@
             android:name=".view.activity.DataActivity"
             android:label="@string/title_activity_data"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.activity.CopyrightActivity"
+            android:label="关于作者"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity
