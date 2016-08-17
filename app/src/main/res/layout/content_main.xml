@@ -32,60 +32,9 @@
         android:background="@color/primary"
      />
 
-    <Button
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="关于"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/activity_vertical_margin"
-        android:id="@+id/btnAbout"
-        android:layout_gravity="center"
-        android:background="@color/primary"
-         />
-    <Button
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="切换账户"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/activity_vertical_margin"
-        android:id="@+id/btnSwitchAccount"
-        android:layout_gravity="center"
-        android:background="@color/primary"
-        />
-    <!--<Button-->
-        <!--android:layout_marginTop="50dp"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="测试"-->
-        <!--android:textColor="#ffffff"-->
-        <!--android:textSize="@dimen/activity_vertical_margin"-->
-        <!--android:id="@+id/btnTest"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:background="@color/primary"-->
-        <!--/>-->
-    <Button
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="管理员"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/activity_vertical_margin"
-        android:id="@+id/btnAdmin"
-        android:layout_gravity="center"
-        android:background="@color/primary"
-        />
-    <Button
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="关于作者"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/activity_vertical_margin"
-        android:id="@+id/btnAboutme"
-        android:layout_gravity="center"
-        android:background="@color/primary"
-        />
+
+
+
+
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.yuzhiyun.chemistry.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,11 +14,10 @@ import com.yuzhiyun.chemistry.view.base.BaseActivity;
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     Button btnExam;
-    Button btnAbout;
-    Button btnSwitchAccount;
-    //    Button btnTest;
-    Button btnAdmin;
-    Button btnAboutme;
+    FloatingActionButton fabAbout;
+    FloatingActionButton fabSwitchAccount;
+    FloatingActionButton fabAdmin;
+    FloatingActionButton fabAboutme;
     TextView tvUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void findView() {
         btnExam= (Button) findViewById(R.id.btnExam);
-        btnAbout= (Button) findViewById(R.id.btnAbout);
-        btnSwitchAccount= (Button) findViewById(R.id.btnSwitchAccount);
-//        btnTest= (Button) findViewById(R.id.btnTest);
-        btnAdmin= (Button) findViewById(R.id.btnAdmin);
-        btnAboutme= (Button) findViewById(R.id.btnAboutme);
+        fabAbout= (FloatingActionButton) findViewById(R.id.fabAbout);
+        fabSwitchAccount= (FloatingActionButton) findViewById(R.id.fabSwitchAccount);
+        fabAdmin= (FloatingActionButton) findViewById(R.id.fabAdmin);
+        fabAboutme= (FloatingActionButton) findViewById(R.id.fabAboutme);
 
         tvUser= (TextView) findViewById(R.id.tvUser);
 
@@ -45,11 +44,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void setListener() {
         btnExam.setOnClickListener(this);
-        btnSwitchAccount.setOnClickListener(this);
-        btnAbout.setOnClickListener(this);
-//        btnTest.setOnClickListener(this);
-        btnAdmin.setOnClickListener(this);
-        btnAboutme.setOnClickListener(this);
+
+        fabAbout.setOnClickListener(this);
+        fabSwitchAccount.setOnClickListener(this);
+        fabAdmin.setOnClickListener(this);
+        fabAboutme.setOnClickListener(this);
     }
 
     @Override
@@ -64,19 +63,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnExam:
                 startActivity(new Intent(context,ChaptersActivity.class));
                 break;
-            case R.id.btnAbout:
+            case R.id.fabAbout:
                 startActivity(new Intent(context,OutlineActivity.class));
                 break;
-            case R.id.btnSwitchAccount:
+            case R.id.fabSwitchAccount:
                 startActivity(new Intent(context,LoginRegisterActivity.class));
                 break;
 //            case R.id.btnTest:
 //                startActivity(new Intent(context,TestActivity.class));
 //                break;
-            case R.id.btnAdmin:
+            case R.id.fabAdmin:
                 startActivity(new Intent(context,UserListActivity.class));
                 break;
-            case R.id.btnAboutme:
+            case R.id.fabAboutme:
                 startActivity(new Intent(context,CopyrightActivity.class));
                 break;
 
