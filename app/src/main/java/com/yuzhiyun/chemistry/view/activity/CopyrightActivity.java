@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.util.toast;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
+import com.yuzhiyun.chemistry.view.fragment.BigPictureFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -107,7 +110,10 @@ public class CopyrightActivity extends BaseActivity implements  View.OnClickList
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                toast.ShowText("查看大图", CopyrightActivity.this);
+//                                toast.ShowText("查看大图", CopyrightActivity.this);
+                                FragmentManager fragmentManager = getSupportFragmentManager();
+                                Fragment fragment = new BigPictureFragment();
+                                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container_copyright,fragment).commit();
 
                                 break;
                             case 1:
