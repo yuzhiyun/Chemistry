@@ -134,7 +134,7 @@ public class ExamActivity extends AppCompatActivity {
                         }
 
                         exerciseTimer = System.currentTimeMillis() - startTimer;
-                        Log.i("ExamActivity", "做题时间" + exerciseTimer);
+//                        Log.i("ExamActivity", "做题时间" + exerciseTimer);
                         handler.sendEmptyMessage(MESSAGE_WHAT);
                     }
 
