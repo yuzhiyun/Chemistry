@@ -29,4 +29,6 @@ dependencies {
     compile 'com.android.support:support-v4:23.1.1'
     //floatingactionbutton的弹出效果库
     compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile files('libs/Bmob_Push_V1.0.0beta_20160627.jar')
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
 }

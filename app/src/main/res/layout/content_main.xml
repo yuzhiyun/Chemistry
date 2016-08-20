@@ -14,7 +14,7 @@
 
     tools:showIn="@layout/activity_main">
     <TextView
-        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
         android:id="@+id/tvUser"
         android:textSize="16dp"
         android:text="登录者："
