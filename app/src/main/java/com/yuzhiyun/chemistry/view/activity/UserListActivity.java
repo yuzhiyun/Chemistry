@@ -24,11 +24,14 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 public class UserListActivity extends BaseActivity {
-    private static final String KEY_USERNAME = "userName";
+    private static final String KEY_POSITION = "position";
     String[] userName;
     ListView listView;
     private ArrayAdapter<String> UserAdapter;
     Intent intent;
+    //
+    String KEY_WHICH_FAB = "whichFab";
+
     @Override
     protected void setLayoutView() {
         setContentView(R.layout.activity_user_list);
@@ -42,36 +45,39 @@ public class UserListActivity extends BaseActivity {
     @Override
     protected void setListener() {
 
-}
+    }
 
     @Override
     protected void initOther() {
-
-        intent=new Intent(UserListActivity.this,DataActivity.class);
+        if (getIntent().getExtras().getString(KEY_WHICH_FAB).equals("fabTestSend"))
+            intent = new Intent(UserListActivity.this, TestSendActivity.class);
+        else
+            intent = new Intent(UserListActivity.this, DataActivity.class);
         getUserNameList();
     }
 
-    /**根据listview被点击的item获取到对应的userName，通过startActivity传递给下一个Activity
-     * @param position  onItemClick传递过来的参数
+    /**
+     * 根据listview被点击的item获取到对应的userName，通过startActivity传递给下一个Activity
      *
+     * @param position onItemClick传递过来的参数
      */
-    void startActivity(int position){
-        Bundle bundle=new Bundle();
+    void startActivity(int position) {
+        Bundle bundle = new Bundle();
 //        bundle.putString(KEY_USERNAME,userName[position]);
-        bundle.putInt(KEY_USERNAME,position);
+        bundle.putInt(KEY_POSITION, position);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     /**
-     *获取数据，并且处理listView
+     * 获取数据，并且处理listView
      */
     public void getUserNameList() {
         //进度条
-        final ProgressDialog progressDialog=new ProgressDialog(context);
+        final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("加载用户列表...");
         progressDialog.show();
-        BmobQuery<User> query=new BmobQuery<>();
+        BmobQuery<User> query = new BmobQuery<>();
 //        query.addWhereEqualTo()
 
 //query.addWhereRelatedTo
@@ -79,14 +85,14 @@ public class UserListActivity extends BaseActivity {
             @Override
             public void onSuccess(List<User> list) {
                 //记录全局userList
-                CONSTANT.userList=list;
+                CONSTANT.userList = list;
                 progressDialog.dismiss();
-                String[]  names=new String[list.size()];
-                for (int i=0;i<list.size();i++)
-                    names[i]=list.get(i).getUsername().toString();
+                String[] names = new String[list.size()];
+                for (int i = 0; i < list.size(); i++)
+                    names[i] = list.get(i).getUsername().toString();
 
-                userName=names;
-                UserAdapter = new ArrayAdapter<String>(UserListActivity.this, android.R.layout.simple_list_item_1,names);
+                userName = names;
+                UserAdapter = new ArrayAdapter<String>(UserListActivity.this, android.R.layout.simple_list_item_1, names);
                 listView.setAdapter(UserAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

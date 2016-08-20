@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -39,18 +40,6 @@ public class OutlineActivity extends BaseActivity {
         toolbar.setTitle("教学大纲");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
-        // 使用推送服务时的初始化操作
-        BmobInstallation.getCurrentInstallation(this).save();
-
-        // 启动推送服务
-        BmobPush.startWork(context);
-
-        // 创建推送消息的对象
-        BmobPushManager bmobPushManager = new BmobPushManager(this);
-        // 推送一条消息给所有安装此应用的设备
-        bmobPushManager.pushMessageAll("hello");
     }
 
 }

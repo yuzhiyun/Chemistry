@@ -8,9 +8,19 @@ import cn.bmob.v3.datatype.BmobRelation;
  */
 public class User extends BmobUser {
     //关联Record
-    BmobRelation relationRecord ;
+    BmobRelation relationRecord;
     //由于bmob的密码不可见，所以我在这里新加一个字段，用于查看密码，以防有人忘记密码
     String pwd;
+    //手机设备id
+    String installationId;
+
+    public String getInstallationId() {
+        return installationId;
+    }
+
+    public void setInstallationId(String installationId) {
+        this.installationId = installationId;
+    }
 
     public BmobRelation getRelationRecord() {
         return relationRecord;

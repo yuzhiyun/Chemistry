@@ -64,5 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_dialog_info" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabTestSend"
+        fab:fab_title="测试推送功能"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_compose" />
 </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </android.support.design.widget.CoordinatorLayout>

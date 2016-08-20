@@ -40,7 +40,7 @@ public class DataActivity extends BaseActivity {
     private static final int NEGATIVE_SUBCOLUMNS_DATA = 3;
     private static final int NEGATIVE_STACKED_DATA = 4;
     //activity之间传递数据的key 值
-    private static final String KEY_USERNAME = "userName";
+    private static final String KEY_POSITION = "position";
     //activity传递过来的
     int position;
     //指定用户的Record数据
@@ -84,7 +84,7 @@ public class DataActivity extends BaseActivity {
     @Override
     protected void initOther() {
 //        设置title为上一个activity的选中的用户名
-        position = getIntent().getExtras().getInt(KEY_USERNAME, 0);
+        position = getIntent().getExtras().getInt(KEY_POSITION, 0);
         userName = CONSTANT.userList.get(position).getUsername().toString();
         title.setText(userName);
 

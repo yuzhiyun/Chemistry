@@ -7,8 +7,10 @@ package com.yuzhiyun.chemistry.model.proxy;
 import android.content.Context;
 import android.util.Log;
 
+import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
 
+import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
 
 
@@ -65,11 +67,12 @@ public class UserProxy {
     }
 
     //注册
-    public void signUp(String userName, String password) {
+    public void signUp(String userName, String password,String installationId) {
         User user = new User();
         user.setUsername(userName);
         user.setPassword(password);
         user.setPwd(password);
+        user.setInstallationId(installationId);
 //        user.setEmail(email);
 //        user.setSex(Constant.SEX_FEMALE);
 //        user.setSignature("这个家伙很懒，什么也不说。。。");
@@ -77,6 +80,7 @@ public class UserProxy {
 
             @Override
             public void onSuccess() {
+
                 // TODO Auto-generated method stub
                 if (signUpLister != null) {
                     signUpLister.onSignUpSuccess();

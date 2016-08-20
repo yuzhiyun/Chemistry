@@ -18,6 +18,7 @@ String TAG;
         super.onCreate();
         app = this;
         TAG=this.getClass().getSimpleName();
+
     }
 
     //	获取现在的用户BmobUser.getCurrentUser

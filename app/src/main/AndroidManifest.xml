@@ -8,8 +8,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="ANDROID.PERMISSION.WRITE_APN_SETTINGS" />
-    <permission android:protectionLevel="normal" android:name="cn.bmob.permission.push"></permission>
-    <uses-permission android:name="cn.bmob.permission.push"/><!-- 添加自定义的权限-->
+
+    <permission
+        android:name="cn.bmob.permission.push"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="cn.bmob.permission.push" />
+    <!-- 添加自定义的权限 -->
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -20,6 +25,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
     <application
         android:name=".model.Application.App"
         android:allowBackup="true"
@@ -75,34 +81,30 @@
         <activity
             android:name=".view.activity.DataActivity"
             android:label="@string/title_activity_data"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.CopyrightActivity"
             android:label="关于作者"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.UserListActivity"
             android:label="@string/title_activity_user_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.activity.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <!-- BmobPush start -->
         <service
-            android:label="PushService"
             android:name="cn.bmob.push.lib.service.PushService"
-            android:process="cn.bmob.push"
+            android:exported="true"
+            android:label="PushService"
             android:permission="cn.bmob.permission.push"
-            android:exported="true">
+            android:process="cn.bmob.push">
             <intent-filter>
-                <action android:name="cn.bmob.push.lib.service.PushService"/>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
         </service>
 
-        <receiver android:name="cn.bmob.push.PushReceiver" >
-            <intent-filter android:priority="2147483647" ><!--优先级加最高-->
+        <receiver android:name="cn.bmob.push.PushReceiver">
+            <intent-filter android:priority="2147483647"> <!-- 优先级加最高 -->
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 解锁完成后会调用 -->
@@ -112,10 +114,15 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".model.receiver.MyPushMessageReceiver">
-            <intent-filter >
-                <action android:name="cn.bmob.push.action.MESSAGE"/>
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".view.activity.TestSendActivity"
+            android:label="@string/title_activity_test_send"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

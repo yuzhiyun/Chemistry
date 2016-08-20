@@ -13,6 +13,8 @@ import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.dao.db;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
+import cn.bmob.v3.BmobInstallation;
+
 public class WelcomeActivity extends BaseActivity {
 
     Handler handler = new Handler() {
@@ -71,6 +73,8 @@ public class WelcomeActivity extends BaseActivity {
         toolbar.setVisibility(View.INVISIBLE);
         db.copyToSD(WelcomeActivity.this);
         handler.sendEmptyMessageDelayed(100, 2000);
+
+
     }
 
 }

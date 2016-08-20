@@ -16,6 +16,8 @@ import com.yuzhiyun.chemistry.model.proxy.UserProxy;
 import com.yuzhiyun.chemistry.model.util.toast;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
+import cn.bmob.v3.BmobInstallation;
+
 public class RegisterActivity extends BaseActivity implements View.OnClickListener, UserProxy.ISignUpListener {
     AppCompatEditText etUserName;
     AppCompatEditText etUserPwd;
@@ -57,7 +59,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.btnRegister:
                 if (etUserPwd.getText().toString().trim().equals(etUserPwdAgain.getText().toString().trim()))
-                    userProxy.signUp(etUserName.getText().toString().trim(), etUserPwd.getText().toString().trim());
+                    //传入用户名、密码、设备id进行注册
+                    userProxy.signUp(etUserName.getText().toString().trim(), etUserPwd.getText().toString().trim(), BmobInstallation.getInstallationId(context));
                 else
                     toast.ShowText("两次输入密码不一致", RegisterActivity.this);
                 break;

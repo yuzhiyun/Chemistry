@@ -7,9 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.util.CONSTANT;
 
+import cn.bmob.push.BmobPush;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -26,6 +29,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         setLayoutView();
         context=this;
         Bmob.initialize(this, CONSTANT.BMOB_APP_ID);
+
+        // 使用推送服务时的初始化操作,添加一条BmobInstallation的记录
+        BmobInstallation.getCurrentInstallation(App.getInstance()).save();
+        // 启动推送服务
+        BmobPush.startWork(context);
         //由于在下习惯在activity中使用toolbar，所以在此处处理了一下，请注意，继承这个BaseActivity的时候，布局文件一定要加上toolbar,不然空指针异常
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //之所以设置为“”，是因为我们通常需要把toolbar的title居中显示，由于没有函数直接居中显示，所以把title设置为空字符串，然后有必要的话再在布局文件的toolbar中添加一个居中显示的textView即可
