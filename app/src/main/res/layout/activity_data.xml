@@ -48,7 +48,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:gravity="center"
-                    android:text="2016--09" />
+                    android:text="2016--08" />
 
                 <ImageView
                     android:id="@+id/imgRight"

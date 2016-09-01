@@ -34,9 +34,9 @@ import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class DataActivity extends BaseActivity implements View.OnClickListener{
+public class DataActivity extends BaseActivity implements View.OnClickListener {
 
-//    private static final int DEFAULT_DATA = 0;
+    //    private static final int DEFAULT_DATA = 0;
 //    private static final int SUBCOLUMNS_DATA = 1;
 //    private static final int STACKED_DATA = 2;
 //    private static final int NEGATIVE_SUBCOLUMNS_DATA = 3;
@@ -81,9 +81,9 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
         chart = (ColumnChartView) findViewById(R.id.chart);
         title = (TextView) findViewById(R.id.title);
 
-        tvTime= (TextView) findViewById(R.id.tvTime);
-        imgLeft= (ImageView) findViewById(R.id.imgLeft);
-        imgRight= (ImageView) findViewById(R.id.imgRight);
+        tvTime = (TextView) findViewById(R.id.tvTime);
+        imgLeft = (ImageView) findViewById(R.id.imgLeft);
+        imgRight = (ImageView) findViewById(R.id.imgRight);
     }
 
     @Override
@@ -98,7 +98,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
         position = getIntent().getExtras().getInt(KEY_POSITION, 0);
         userName = CONSTANT.userList.get(position).getUsername().toString();
         title.setText(userName);
-
         fetchData();
     }
 
@@ -114,12 +113,12 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
         for (int i = 0; i < numColumns; ++i) {
 
             values = new ArrayList<SubcolumnValue>();
-            if (listDayOfMonth.indexOf(i) >=0) {
+            if (listDayOfMonth.indexOf(i) >= 0) {
 //                Log.i("listDayOfMonth", i + "");
 //                Log.i("recordList   for循环之前", recordList.size()+"");
 
                 for (Record record : recordList) {
-                    Log.i("recordList for循环 ",dateGetDayofMonth(record.getStartTime()) + "");
+                    Log.i("recordList for循环 ", dateGetDayofMonth(record.getStartTime()) + "");
                     if (i == dateGetDayofMonth(record.getStartTime())) {
                         values.add(new SubcolumnValue(record.getTimeSpan() / 60000, ChartUtils.pickColor()));
                     }
@@ -197,11 +196,19 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
      *
      * @param list
      */
+    //所要查看数据的年
+    int year = 2016;
+    //所要查看数据的月份
+    int month = 8;
+
     private void setListDayOfMonth(List<Record> list) {
+        Log.i("date",year+"年"+month+"月");
+        listDayOfMonth.clear();
         for (int i = 0; i < list.size(); i++) {
             Record record = list.get(i);
-            if (dateGetYear(record.getStartTime()) == 2016)
-                if (dateGetMonth(record.getStartTime()) == 8) {
+
+            if (dateGetYear(record.getStartTime()) == year)
+                if (dateGetMonth(record.getStartTime()) == month) {
                     int day = dateGetDayofMonth(record.getStartTime());
                     //如果day不在listDayOfMonth里面，就添加进去
                     if (listDayOfMonth.indexOf(day) < 0)
@@ -210,7 +217,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
                 }
         }
         for (int i = 0; i < listDayOfMonth.size(); i++)
-            Log.i("listDayOfMonth ["+i+"] :", listDayOfMonth.get(i) + "");
+            Log.i("listDayOfMonth [" + i + "] :", listDayOfMonth.get(i) + "");
     }
 
     int dateGetYear(long time) {
@@ -230,11 +237,44 @@ public class DataActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.imgLeft:
+                if (1 == month) {
+                    month = 12;
+                    year -= 1;
+                } else
+                    month -= 1;
+                setTimeToTextView();
+
+                //更新数据
+                update();
+
                 break;
             case R.id.imgRight:
+                if (12 == month) {
+                    month = 1;
+                    year += 1;
+                } else
+                    month += 1;
+                setTimeToTextView();
+                //更新数据
+                update();
                 break;
         }
+    }
+
+    /**
+     * 修改月份之后
+     */
+    private void setTimeToTextView() {
+        if (month < 10)
+            tvTime.setText(year + "--0" + month);
+        else
+            tvTime.setText(year + "--" + month);
+    }
+
+    //修改月份之后，重新设置数据集到柱状图里面
+    private void update() {
+        setDataToMap(recordList);
     }
 }
