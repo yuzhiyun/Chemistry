@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.entity.bmobEntity.Record;
@@ -24,6 +25,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 public class UserListActivity extends BaseActivity {
+
+    TextView tvTitle;
     private static final String KEY_POSITION = "position";
     String[] userName;
     ListView listView;
@@ -40,6 +43,7 @@ public class UserListActivity extends BaseActivity {
     @Override
     protected void findView() {
         listView = (ListView) findViewById(R.id.listView);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
     }
 
     @Override
@@ -49,10 +53,13 @@ public class UserListActivity extends BaseActivity {
 
     @Override
     protected void initOther() {
-        if (getIntent().getExtras().getString(KEY_WHICH_FAB).equals("fabTestSend"))
+        if (getIntent().getExtras().getString(KEY_WHICH_FAB).equals("fabTestSend")) {
             intent = new Intent(UserListActivity.this, TestSendActivity.class);
-        else
+            tvTitle.setText("问候其他用户");
+        } else {
             intent = new Intent(UserListActivity.this, DataActivity.class);
+            tvTitle.setText("查看所有用户做题时间");
+        }
         getUserNameList();
     }
 

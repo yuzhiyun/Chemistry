@@ -1,4 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -48,8 +53,16 @@
         android:text="D、"
         android:textColor="@color/text_color"
         android:textSize="20dp" />
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvAnswer5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E、"
+        android:textColor="@color/text_color"
+        android:textSize="20dp" />
     <Button
+        android:layout_marginTop="20dp"
         android:id="@+id/btnShowAnswer"
         android:text="显示答案"
         android:textSize="@dimen/activity_horizontal_margin"
@@ -61,3 +74,4 @@
         android:layout_height="wrap_content" />
 
 </LinearLayout>
+</ScrollView>

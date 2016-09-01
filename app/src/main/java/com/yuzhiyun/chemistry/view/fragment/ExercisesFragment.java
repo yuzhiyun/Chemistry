@@ -30,6 +30,7 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
     public TextView tvAnswer2;
     public TextView tvAnswer3;
     public TextView tvAnswer4;
+    public TextView tvAnswer5;
     public Exercise exercise ;
     public Button btnShowAnswer;
     public ExercisesFragment() {
@@ -60,6 +61,7 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
         tvAnswer2 = (TextView) view.findViewById(R.id.tvAnswer2);
         tvAnswer3 = (TextView) view.findViewById(R.id.tvAnswer3);
         tvAnswer4 = (TextView) view.findViewById(R.id.tvAnswer4);
+        tvAnswer5 = (TextView) view.findViewById(R.id.tvAnswer5);
         btnShowAnswer= (Button) view.findViewById(R.id.btnShowAnswer);
     }
 
@@ -92,6 +94,7 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
         tvAnswer2.setText("B、"+exercise.getAnswer2());
         tvAnswer3.setText("C、"+exercise.getAnswer3());
         tvAnswer4.setText("D、"+exercise.getAnswer4());
+        tvAnswer5.setText("D、"+exercise.getAnswer5());
 //        Log.e("答案initView", exercise.getRightAnswer() + " --答案");
     }
 
@@ -118,6 +121,10 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
                     case 4:
                         tvAnswer4.setTextColor(getResources().getColor(R.color.primary));
                         tvAnswer4.setTextSize(30);
+                        break;
+                    case 5:
+                        tvAnswer5.setTextColor(getResources().getColor(R.color.primary));
+                        tvAnswer5.setTextSize(30);
                         break;
                     default:
                         Toast.makeText(getActivity(),"没有正确答案",Toast.LENGTH_LONG).show();

@@ -70,6 +70,7 @@ public class db {
                 list_data.setAnswer2(cursor.getString(cursor.getColumnIndex(table.ANSWER2)));
                 list_data.setAnswer3(cursor.getString(cursor.getColumnIndex(table.ANSWER3)));
                 list_data.setAnswer4(cursor.getString(cursor.getColumnIndex(table.ANSWER4)));
+                list_data.setAnswer5(cursor.getString(cursor.getColumnIndex(table.ANSWER5)));
                 list_data.setRightAnswer(cursor.getInt(cursor.getColumnIndex(table.RIGHT_ANSWER)));
                 arrayList.add(list_data);
                 Log.i("db cursor", "question: " + cursor.getString(cursor.getColumnIndex(table.QUESTION))

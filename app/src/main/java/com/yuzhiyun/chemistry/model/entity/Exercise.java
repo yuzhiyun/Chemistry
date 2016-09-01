@@ -9,7 +9,10 @@ public class Exercise {
     private String answer2;
     private String answer3;
     private String answer4;
+    private String answer5;
     private int rightAnswer;
+
+
 
     public Exercise() {
     }
@@ -70,5 +73,13 @@ public class Exercise {
 
     public void setAnswer4(String answer4) {
         this.answer4 = answer4;
+    }
+
+    public String getAnswer5() {
+        return answer5;
+    }
+
+    public void setAnswer5(String answer5) {
+        this.answer5 = answer5;
     }
 }
