@@ -55,6 +55,8 @@ public class ExamActivityController {
             case 2:
                 //计算题
             case 3:
+                //判断题
+            case 4:
                 int size2 = database.getList(type, chapter+1).size();
                 if (0 == size2)
                     Log.e("getFragmentArrayList", "未获取到数据");

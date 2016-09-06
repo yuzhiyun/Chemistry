@@ -19,18 +19,20 @@ public class CONSTANT {
             "第七章 原子结构与原子周期律",
     };
 //    题型
-    public static String[] data = {
+    public static String[] type = {
             "选择题",
             "名词解释题",
             "简答题",
-            "计算题"
+            "计算题",
+            "判断题"
     };
     //    表名
     public static String[] table={
             "choiceQuestion",
             "nounExplanationQuestion",
             "briefAnswerQuestion",
-            "calculateQuestion"};
+            "calculateQuestion",
+            "judgementQuestion"};
     public static String BMOB_APP_ID="a1a600ee66c4e8af2871fdbe17cf881b";
     public static List<User> userList;
 }

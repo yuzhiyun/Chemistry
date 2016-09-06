@@ -2,6 +2,7 @@ package com.yuzhiyun.chemistry.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,11 @@ import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.dao.db;
 import com.yuzhiyun.chemistry.model.entity.Exercise;
 import com.yuzhiyun.chemistry.model.entity.NoChoiceExercise;
+import com.yuzhiyun.chemistry.model.util.UtilHtml;
 
 import java.util.ArrayList;
 
-public class NoChoiceExerciseFragment extends Fragment {
+public class NoChoiceExerciseFragment extends Fragment implements View.OnClickListener {
     public String TAG = "NoChoiceExerciseFragment";
     int position;
     int type;
@@ -34,7 +36,7 @@ public class NoChoiceExerciseFragment extends Fragment {
         this.chapter = chapter;
     }
 
-    public NoChoiceExerciseFragment( ) {
+    public NoChoiceExerciseFragment() {
     }
 
 
@@ -54,6 +56,7 @@ public class NoChoiceExerciseFragment extends Fragment {
         Log.i(TAG, "onCreateView");
         return view;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -63,30 +66,47 @@ public class NoChoiceExerciseFragment extends Fragment {
     }
 
     private void setListener() {
-
+        btnShowAnswer.setOnClickListener(this);
 
     }
 
     private void initView() {
-        db database=new db();
-        ArrayList<NoChoiceExercise> exerciseArrayList=database.getList(type, chapter + 1);
-        Log.i("exerciseArrayList的size=",exerciseArrayList.size()+"");
-        noChoiceExercise=exerciseArrayList.get(position);
-        String a=noChoiceExercise.getQuestion();
-        tvQuestion.setText(position + 1 + "、 " + a);
-        String b=noChoiceExercise.getAnswer().replace("\\n","\n").replace("\\t","\t");
+        db database = new db();
+        ArrayList<NoChoiceExercise> exerciseArrayList = database.getList(type, chapter + 1);
+        Log.i("exerciseArrayList的size=", exerciseArrayList.size() + "");
+        noChoiceExercise = exerciseArrayList.get(position);
+        String a = noChoiceExercise.getQuestion();
+//        tvQuestion.setText(position + 1 + "、 " + a);
+        tvQuestion.setText(Html.fromHtml(UtilHtml.createHtml(position + 1 + "、 " +a)+"" , UtilHtml.imageGetter, null));
+
+        String b = noChoiceExercise.getAnswer().replace("\\n", "\n").replace("\\t", "\t");
 //数据库中的数据应该先写\n再写\t
-        tvAnswer.setText(""+b);
-        String c="name\\nname";
-        Log.i("检测c",c);
-        Log.i("检测c",c.replace("\\n","\n"));
+        //如果是判断题，0代表错误，1代表正确
+        if (4 == type)
+            if (b.equals("0"))
+                tvAnswer.setText("错");
+            else
+                tvAnswer.setText("对");
+        else
+            tvAnswer.setText("" + b);
+        String c = "name\\nname";
+        Log.i("检测c", c);
+        Log.i("检测c", c.replace("\\n", "\n"));
     }
 
     private void findView(View view) {
-        tvQuestion= (TextView) view.findViewById(R.id.tvQuestion);
-        tvAnswer= (TextView) view.findViewById(R.id.tvAnswer);
+        tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
+        tvAnswer = (TextView) view.findViewById(R.id.tvAnswer);
 
-        btnShowAnswer= (Button) view.findViewById(R.id.btnShowAnswer);
+        btnShowAnswer = (Button) view.findViewById(R.id.btnShowAnswer);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnShowAnswer:
+                tvAnswer.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
 }
