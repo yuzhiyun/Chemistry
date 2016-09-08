@@ -2,6 +2,7 @@ package com.yuzhiyun.chemistry.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +15,11 @@ import com.yuzhiyun.chemistry.view.base.BaseActivity;
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     Button btnExam;
-    FloatingActionButton fabAbout;
     FloatingActionButton fabSwitchAccount;
     FloatingActionButton fabAdmin;
     FloatingActionButton fabAboutme;
     FloatingActionButton fabTestSend;
-    TextView tvUser;
+    CollapsingToolbarLayout collapsing_toolbar;
     String KEY_WHICH_FAB="whichFab";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void findView() {
         btnExam= (Button) findViewById(R.id.btnExam);
-        fabAbout= (FloatingActionButton) findViewById(R.id.fabAbout);
         fabSwitchAccount= (FloatingActionButton) findViewById(R.id.fabSwitchAccount);
         fabAdmin= (FloatingActionButton) findViewById(R.id.fabAdmin);
         fabAboutme= (FloatingActionButton) findViewById(R.id.fabAboutme);
         fabTestSend= (FloatingActionButton) findViewById(R.id.fabTestSend);
 
-        tvUser= (TextView) findViewById(R.id.tvUser);
+        collapsing_toolbar= (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
     }
 
@@ -48,7 +47,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     protected void setListener() {
         btnExam.setOnClickListener(this);
 
-        fabAbout.setOnClickListener(this);
         fabSwitchAccount.setOnClickListener(this);
         fabAdmin.setOnClickListener(this);
         fabAboutme.setOnClickListener(this);
@@ -58,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void initOther() {
         toolbar.setTitle("习题宝典");
-        tvUser.setText("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
+        collapsing_toolbar.setTitle("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
     }
 
     @Override
@@ -67,9 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnExam:
                 startActivity(new Intent(context,ChaptersActivity.class));
                 break;
-            case R.id.fabAbout:
-                startActivity(new Intent(context,OutlineActivity.class));
-                break;
+
             case R.id.fabSwitchAccount:
                 startActivity(new Intent(context,LoginRegisterActivity.class));
                 break;

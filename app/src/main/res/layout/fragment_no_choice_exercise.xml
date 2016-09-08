@@ -1,38 +1,59 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    tools:context=".view.fragment.ExercisesFragment">
+    android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/tvQuestion"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="题目"
-        android:textColor="@color/text_color"
-        android:textSize="30dp" />
-    <TextView
-        android:visibility="invisible"
-        android:layout_marginTop="50dp"
-        android:id="@+id/tvAnswer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="解答："
-        android:textColor="@color/text_color"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/cardView_left_right"
+        android:layout_marginRight="@dimen/cardView_left_right"
+
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="10dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            tools:context=".view.fragment.ExercisesFragment">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="题目"
+                android:textColor="@color/text_color"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/tvAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="解答："
+                android:textColor="@color/text_color"
+                android:textSize="20dp"
+                android:visibility="invisible" />
 
 
+            <Button
+                android:id="@+id/btnShowAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:background="@color/primary"
+                android:text="显示答案"
 
-    <Button
-        android:id="@+id/btnShowAnswer"
-        android:text="显示答案"
-        android:textSize="@dimen/activity_horizontal_margin"
-        android:textColor="@color/white"
-        android:background="@color/primary"
-        android:layout_gravity="center_horizontal|bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_horizontal_margin" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-</LinearLayout>
+</ScrollView>

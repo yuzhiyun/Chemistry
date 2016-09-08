@@ -32,7 +32,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         etUserPwd = (AppCompatEditText) findViewById(R.id.etUserPwd);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
-
     }
 
     @Override
