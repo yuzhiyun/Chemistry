@@ -4,31 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.yuzhiyun.chemistry.view.activity.ChaptersActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
+
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             >
-            <TextView
-                android:text="章节"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                android:gravity="center"
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                />
+            <!--<TextView-->
+                <!--android:text="章节"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="25dp"-->
+                <!--android:gravity="center"-->
+                <!--android:id="@+id/tvTitle"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--/>-->
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

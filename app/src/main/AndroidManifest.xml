@@ -44,10 +44,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:parentActivityName=".view.activity.MainActivity"
             android:name=".view.activity.ChaptersActivity"
             android:label="@string/title_activity_chapters"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:parentActivityName=".view.activity.ChaptersActivity"
             android:name=".view.activity.TypeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -81,6 +83,7 @@
             android:label="@string/title_activity_data"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:parentActivityName=".view.activity.MainActivity"
             android:name=".view.activity.CopyrightActivity"
             android:label="关于作者"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -97,7 +97,8 @@ public class CopyrightActivity extends BaseActivity implements  View.OnClickList
 
     @Override
     protected void initOther() {
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("App开发者信息");
     }
 
     @Override

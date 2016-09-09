@@ -41,9 +41,15 @@ public class TypeActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     protected void initOther() {
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("选择题型");
         adapter = new ArrayAdapter<String>(TypeActivity.this, android.R.layout.simple_list_item_1, CONSTANT.type);
         listView.setAdapter(adapter);
         intent = new Intent(TypeActivity.this, ExamActivity.class);
+
+
     }
 
     @Override

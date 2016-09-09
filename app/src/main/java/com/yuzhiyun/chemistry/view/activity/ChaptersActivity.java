@@ -2,12 +2,12 @@ package com.yuzhiyun.chemistry.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.util.CONSTANT;
 import com.yuzhiyun.chemistry.view.base.BaseActivity;
@@ -15,7 +15,7 @@ import com.yuzhiyun.chemistry.view.base.BaseActivity;
 public class ChaptersActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     ListView listView;
-    TextView tvTitle;
+//    TextView tvTitle;
     private ArrayAdapter<String> chapterAdapter;
     Intent intent;
     //数据源
@@ -29,7 +29,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     protected void findView() {
         listView= (ListView) findViewById(R.id.listView);
-        tvTitle= (TextView) findViewById(R.id.tvTitle);
+//        tvTitle= (TextView) findViewById(R.id.tvTitle);
     }
 
     @Override
@@ -42,8 +42,10 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
         chapterAdapter = new ArrayAdapter<String>(ChaptersActivity.this, android.R.layout.simple_list_item_1, CONSTANT.array_data);
         listView.setAdapter(chapterAdapter);
         intent=new Intent(ChaptersActivity.this,TypeActivity.class);
-        tvTitle.setText("选择章节");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("选择章节");
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
