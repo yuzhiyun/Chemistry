@@ -4,6 +4,7 @@ package com.yuzhiyun.chemistry.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.dao.db;
 import com.yuzhiyun.chemistry.model.entity.Exercise;
+import com.yuzhiyun.chemistry.model.util.UtilHtml;
 
 import java.util.ArrayList;
 
@@ -89,13 +91,15 @@ public class ExercisesFragment extends Fragment implements View.OnClickListener{
         Log.i("exerciseArrayList的size=",exerciseArrayList.size()+"");
         exercise=exerciseArrayList.get(position);
         Log.i("exercise",exercise.getQuestion()+"");
-        tvContent.setText(position + 1 + "、 " + exercise.getQuestion());
-        tvAnswer1.setText("A、"+exercise.getAnswer1());
-        tvAnswer2.setText("B、"+exercise.getAnswer2());
-        tvAnswer3.setText("C、"+exercise.getAnswer3());
-        tvAnswer4.setText("D、"+exercise.getAnswer4());
-        tvAnswer5.setText("D、"+exercise.getAnswer5());
-//        Log.e("答案initView", exercise.getRightAnswer() + " --答案");
+
+
+        tvContent.setText(Html.fromHtml(UtilHtml.createHtml(position + 1 + "、 " + exercise.getQuestion())+"",UtilHtml.imageGetter,null));
+        tvAnswer1.setText(Html.fromHtml(UtilHtml.createHtml("A、"+exercise.getAnswer1())+"",UtilHtml.imageGetter,null));
+        tvAnswer2.setText(Html.fromHtml(UtilHtml.createHtml("B、"+exercise.getAnswer2())+"",UtilHtml.imageGetter,null));
+        tvAnswer3.setText(Html.fromHtml(UtilHtml.createHtml("C、"+exercise.getAnswer3())+"",UtilHtml.imageGetter,null));
+        tvAnswer4.setText(Html.fromHtml(UtilHtml.createHtml("D、"+exercise.getAnswer4())+"",UtilHtml.imageGetter,null));
+        tvAnswer5.setText(Html.fromHtml(UtilHtml.createHtml("E、"+exercise.getAnswer5())+"",UtilHtml.imageGetter,null));
+
     }
 
     @Override

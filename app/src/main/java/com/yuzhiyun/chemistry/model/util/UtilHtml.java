@@ -5,18 +5,21 @@ import android.os.Environment;
 import android.text.Html;
 import android.util.Log;
 
+import com.yuzhiyun.chemistry.model.dao.db;
+
 /**
  * Created by yuzhiyun on 2016-09-06.
  */
 public class UtilHtml {
 
-    /**把从数据库中提取出来的String 转换成html
+    /**
+     * 把从数据库中提取出来的String 转换成html
      * 此处涉及很多字符串的处理，图片的文件名称用两个#包含，在第一个#后面加/以表示它是图片
      * 而不是文字
      * */
     public static StringBuilder createHtml(String question){
-        //sd卡路径
-        String IMG_PATH = Environment.getExternalStorageDirectory().getPath();
+        //第一章的图片路径
+        String IMG_PATH = db.DATA_PATH+"picture/chapter1";
 
         //依据#将字符串分割
         String[] tokens = question.split("#", 0);
@@ -30,8 +33,11 @@ public class UtilHtml {
             }
         return html ;
     }
-    /***获取图片，
+    /***
+     *
+     * 获取图片
      * 以便使得html显示在textView中
+     *
      * */
     public static final Html.ImageGetter imageGetter = new Html.ImageGetter() {
 
@@ -41,7 +47,7 @@ public class UtilHtml {
             if (null != drawable)
 
                 //由于显示的图片太小，所以我把它的长宽都变大3倍
-                drawable.setBounds(0, 0, drawable.getIntrinsicWidth() * 3, drawable.getIntrinsicHeight() * 3);
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth() * 6, drawable.getIntrinsicHeight() * 3);
             Log.e("getDrawable", source);
             return drawable;
         }

@@ -6,6 +6,7 @@ import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.proxy.UserProxy;
@@ -32,6 +33,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         etUserPwd = (AppCompatEditText) findViewById(R.id.etUserPwd);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
+
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
 //    TextView tvTitle;
     private ArrayAdapter<String> chapterAdapter;
     Intent intent;
-    //数据源，
+    //数据源
 
     String KEY_CHAPTER="Chapter";
     @Override

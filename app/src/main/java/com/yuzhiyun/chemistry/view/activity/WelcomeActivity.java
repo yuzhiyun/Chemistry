@@ -72,6 +72,7 @@ public class WelcomeActivity extends BaseActivity {
     protected void initOther() {
         toolbar.setVisibility(View.INVISIBLE);
         db.copyToSD(WelcomeActivity.this);
+        db.copyPictureToData(WelcomeActivity.this);
         handler.sendEmptyMessageDelayed(100, 2000);
 
 

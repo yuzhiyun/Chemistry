@@ -14,7 +14,8 @@ import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
-    Button btnExam;
+//    Button btnExam;
+    FloatingActionButton fabExam;
     FloatingActionButton fabSwitchAccount;
     FloatingActionButton fabAdmin;
     FloatingActionButton fabAboutme;
@@ -33,7 +34,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void findView() {
-        btnExam= (Button) findViewById(R.id.btnExam);
+//        btnExam= (Button) findViewById(R.id.btnExam);
+        fabExam= (FloatingActionButton) findViewById(R.id.fabExam);
         fabSwitchAccount= (FloatingActionButton) findViewById(R.id.fabSwitchAccount);
         fabAdmin= (FloatingActionButton) findViewById(R.id.fabAdmin);
         fabAboutme= (FloatingActionButton) findViewById(R.id.fabAboutme);
@@ -45,8 +47,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void setListener() {
-        btnExam.setOnClickListener(this);
+//        btnExam.setOnClickListener(this);
 
+        fabExam.setOnClickListener(this);
         fabSwitchAccount.setOnClickListener(this);
         fabAdmin.setOnClickListener(this);
         fabAboutme.setOnClickListener(this);
@@ -62,10 +65,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnExam:
+//            case R.id.btnExam:
+//                startActivity(new Intent(context,ChaptersActivity.class));
+//                break;
+
+            case R.id.fabExam:
                 startActivity(new Intent(context,ChaptersActivity.class));
                 break;
-
             case R.id.fabSwitchAccount:
                 startActivity(new Intent(context,LoginRegisterActivity.class));
                 break;
