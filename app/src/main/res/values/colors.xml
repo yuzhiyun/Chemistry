@@ -4,7 +4,7 @@
     <color name="red">#FF4081</color>
     <color name="primary">#ff03a9f4</color>
     <color name="primaryDark">#ee3399f4</color>
-
+    <color name="colorPrimary">#ff03a9f4</color>
     <color name="status_bar_color">@color/primaryDark</color>
 
     <color name="back">#249ff7</color>

@@ -1,55 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.yuzhiyun.chemistry.view.activity.RegisterActivity"
-    tools:showIn="@layout/activity_register">
+    tools:showIn="@layout/activity_login">
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/etUserName"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="用户名"
-        android:gravity="center_vertical"
-        />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/icon_white" />
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/etUserPwd"
-        android:layout_below="@+id/etUserName"
+
+    <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="密码" />
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/etUserPwdAgain"
-        android:layout_below="@+id/etUserPwd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="确认密码" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="32dp"
+
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.AppCompatEditText
+
+            android:id="@+id/etUserName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext"
+            android:gravity="center_vertical"
+            android:hint="用户名"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray">
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etUserPwd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/etUserName"
+            android:background="@drawable/edittext"
+            android:hint="密码"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray">
+
+        </LinearLayout>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etUserPwdAgain"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:hint="确认密码" />
+    </LinearLayout>
+    <!--</android.support.v7.widget.CardView>-->
+
     <Button
         android:id="@+id/btnRegister"
-        android:layout_below="@+id/etUserPwdAgain"
         android:layout_width="match_parent"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:background="@color/primary"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linear"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@android:color/white"
         android:text="注册"
-        android:textSize="@dimen/activity_horizontal_margin"
-        android:textColor="@color/white"
-        android:layout_height="40dp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/activity_horizontal_margin" />
+
     <TextView
-        android:id="@+id/tvLogin"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/btnRegister"
-        android:text="已有账户，去登录 》"
+        android:id="@+id/tvSeverMsg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textSize="20dp"
-        android:gravity="center"/>
+        android:layout_below="@+id/btnLogin"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="right"
+        android:text="前往登录 >"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 </RelativeLayout>
+

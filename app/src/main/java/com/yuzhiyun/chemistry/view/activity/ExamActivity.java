@@ -96,7 +96,7 @@ public class ExamActivity extends AppCompatActivity {
 
 
     void initOther() {
-        record=new Record();
+        record = new Record();
 
 //        toolbar.setLogo(R.drawable.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -190,36 +190,36 @@ public class ExamActivity extends AppCompatActivity {
         record.setEndTime(System.currentTimeMillis());
         record.setTimeSpan(System.currentTimeMillis() - startTimer);
         record.setUser(App.getInstance().getCurrentUser());
-        record.save(ExamActivity.this, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                 User user=App.getInstance().getCurrentUser();
-                toast.ShowText("数据记录成功"+record.getUser().getUsername(),ExamActivity.this);
-                //更新user表，添加一个relation
-                BmobRelation relationRecord = new BmobRelation();
-                relationRecord.add(record);
-                user.setRelationRecord(relationRecord);
-                user.update(ExamActivity.this, new UpdateListener() {
-                    @Override
-                    public void onSuccess() {
+        if ((System.currentTimeMillis() - startTimer) > 60000)
+            record.save(ExamActivity.this, new SaveListener() {
+                @Override
+                public void onSuccess() {
+                    User user = App.getInstance().getCurrentUser();
+                    toast.ShowText("数据记录成功" + record.getUser().getUsername(), ExamActivity.this);
+                    //更新user表，添加一个relation
+                    BmobRelation relationRecord = new BmobRelation();
+                    relationRecord.add(record);
+                    user.setRelationRecord(relationRecord);
+                    user.update(ExamActivity.this, new UpdateListener() {
+                        @Override
+                        public void onSuccess() {
 
-                    }
+                        }
 
-                    @Override
-                    public void onFailure(int i, String s) {
+                        @Override
+                        public void onFailure(int i, String s) {
 
-                    }
-                });
+                        }
+                    });
 
 
+                }
 
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                toast.ShowText("数据记录失败 "+s,ExamActivity.this);
-                Log.e("onFailure","数据记录失败 "+s);
-            }
-        });
+                @Override
+                public void onFailure(int i, String s) {
+                    toast.ShowText("数据记录失败 " + s, ExamActivity.this);
+                    Log.e("onFailure", "数据记录失败 " + s);
+                }
+            });
     }
 }

@@ -49,7 +49,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:gravity="center"
-                    android:text="2016--08" />
+                    android:text="时间" />
 
                 <ImageView
                     android:id="@+id/imgRight"

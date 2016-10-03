@@ -26,7 +26,7 @@
         android:id="@+id/iv_welcome_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/welcome_logo"
+        android:src="@drawable/icon_white"
         android:layout_gravity="center_vertical|center_horizontal"/>
 
 

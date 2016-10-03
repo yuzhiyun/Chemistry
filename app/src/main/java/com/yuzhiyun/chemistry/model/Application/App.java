@@ -12,12 +12,13 @@ import cn.bmob.v3.BmobUser;
  */
 public class App extends Application {
     private static App app = null;
-String TAG;
+    String TAG;
+
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
-        TAG=this.getClass().getSimpleName();
+        TAG = this.getClass().getSimpleName();
 
     }
 
@@ -28,7 +29,7 @@ String TAG;
         if (user != null) {
             return user;
         }
-        Log.e(TAG,"获取不到user");
+        Log.e(TAG, "获取不到user");
         return null;
     }
 
