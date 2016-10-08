@@ -1,7 +1,6 @@
-package com.yuzhiyun.chemistry.view.activity;
+package com.yuzhiyun.chemistry.controller.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,10 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.controller.base.BaseActivity;
 import com.yuzhiyun.chemistry.model.util.CONSTANT;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
-
-import java.util.ArrayList;
 
 public class TypeActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 

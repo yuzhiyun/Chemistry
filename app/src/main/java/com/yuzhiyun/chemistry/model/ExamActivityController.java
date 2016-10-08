@@ -1,12 +1,11 @@
-package com.yuzhiyun.chemistry.controller;
+package com.yuzhiyun.chemistry.model;
 
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import com.yuzhiyun.chemistry.model.entity.NoChoiceExercise;
-import com.yuzhiyun.chemistry.view.fragment.ExercisesFragment;
+import com.yuzhiyun.chemistry.controller.fragment.ExercisesFragment;
 import com.yuzhiyun.chemistry.model.dao.db;
-import com.yuzhiyun.chemistry.view.fragment.NoChoiceExerciseFragment;
+import com.yuzhiyun.chemistry.controller.fragment.NoChoiceExerciseFragment;
 
 import java.util.ArrayList;
 

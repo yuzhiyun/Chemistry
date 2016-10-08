@@ -1,4 +1,4 @@
-package com.yuzhiyun.chemistry.view.activity;
+package com.yuzhiyun.chemistry.controller.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.controller.base.BaseActivity;
 import com.yuzhiyun.chemistry.model.Application.App;
 import com.yuzhiyun.chemistry.model.dao.db;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
-
-import cn.bmob.v3.BmobInstallation;
 
 public class WelcomeActivity extends BaseActivity {
 

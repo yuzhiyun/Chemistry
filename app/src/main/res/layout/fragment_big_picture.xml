@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/balck"
-    tools:context="com.yuzhiyun.chemistry.view.fragment.BigPictureFragment">
+    tools:context=".controller.fragment.BigPictureFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView

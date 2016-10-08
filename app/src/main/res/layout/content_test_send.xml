@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.yuzhiyun.chemistry.view.activity.TestSendActivity"
+    tools:context=".controller.activity.TestSendActivity"
     tools:showIn="@layout/activity_test_send">
     <TextView
         android:text="这里是问候好友页面，但是功能未全部开发完成，暂时只会给选定用户发送一个通知，可以在通知栏查看到，格式为“你好，我是~~~”"

@@ -34,26 +34,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".controller.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:parentActivityName=".view.activity.TypeActivity"
-            android:name=".view.activity.ExamActivity"
+            android:name=".controller.activity.ExamActivity"
             android:label="@string/title_activity_exam"
+            android:parentActivityName=".controller.activity.TypeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:parentActivityName=".view.activity.MainActivity"
-            android:name=".view.activity.ChaptersActivity"
+            android:name=".controller.activity.ChaptersActivity"
             android:label="@string/title_activity_chapters"
+            android:parentActivityName=".controller.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:parentActivityName=".view.activity.ChaptersActivity"
-            android:name=".view.activity.TypeActivity"
+            android:name=".controller.activity.TypeActivity"
+            android:parentActivityName=".controller.activity.ChaptersActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.activity.WelcomeActivity"
+            android:name=".controller.activity.WelcomeActivity"
             android:label="@string/title_activity_welcome"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -63,32 +62,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name=".controller.activity.LoginActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.activity.LoginRegisterActivity"
+            android:name=".controller.activity.LoginRegisterActivity"
             android:label="@string/title_activity_login_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.activity.RegisterActivity"
+            android:name=".controller.activity.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- <activity -->
-        <!-- android:name=".view.activity.TestActivity" -->
-        <!-- android:label="@string/title_activity_test" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
-            android:name=".view.activity.DataActivity"
+            android:name=".controller.activity.DataActivity"
             android:label="@string/title_activity_data"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:parentActivityName=".view.activity.MainActivity"
-            android:name=".view.activity.CopyrightActivity"
+            android:name=".controller.activity.CopyrightActivity"
             android:label="关于作者"
+            android:parentActivityName=".controller.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.activity.UserListActivity"
+            android:name=".controller.activity.UserListActivity"
             android:label="@string/title_activity_user_list"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -105,7 +101,8 @@
         </service>
 
         <receiver android:name="cn.bmob.push.PushReceiver">
-            <intent-filter android:priority="2147483647"> <!-- 优先级加最高 -->
+            <intent-filter android:priority="2147483647">
+                <!-- 优先级加最高 -->
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 解锁完成后会调用 -->
@@ -121,8 +118,12 @@
         </receiver>
 
         <activity
-            android:name=".view.activity.TestSendActivity"
+            android:name=".controller.activity.TestSendActivity"
             android:label="@string/title_activity_test_send"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ctivitytest"
+            android:label="@string/title_activity_ctivitytest"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

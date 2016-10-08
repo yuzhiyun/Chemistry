@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/back"
-    tools:context="com.yuzhiyun.chemistry.view.activity.WelcomeActivity">
+    tools:context=".controller.activity.WelcomeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:visibility="gone"

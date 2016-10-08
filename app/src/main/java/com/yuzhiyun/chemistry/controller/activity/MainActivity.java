@@ -1,16 +1,13 @@
-package com.yuzhiyun.chemistry.view.activity;
+package com.yuzhiyun.chemistry.controller.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.controller.base.BaseActivity;
 import com.yuzhiyun.chemistry.model.Application.App;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
@@ -20,7 +17,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     FloatingActionButton fabAdmin;
     FloatingActionButton fabAboutme;
     FloatingActionButton fabTestSend;
-    CollapsingToolbarLayout collapsing_toolbar;
+//    CollapsingToolbarLayout collapsing_toolbar;
     String KEY_WHICH_FAB="whichFab";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         fabAboutme= (FloatingActionButton) findViewById(R.id.fabAboutme);
         fabTestSend= (FloatingActionButton) findViewById(R.id.fabTestSend);
 
-        collapsing_toolbar= (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+//        collapsing_toolbar= (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
     }
 
@@ -58,8 +55,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initOther() {
-        toolbar.setTitle("习题宝典");
-        collapsing_toolbar.setTitle("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
+//        toolbar.setTitle("习题宝典");
+//        collapsing_toolbar.setTitle("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
+        toolbar.setTitle("亲爱的"+ App.getInstance().getCurrentUser().getUsername()+"，欢迎光临");
     }
 
     @Override

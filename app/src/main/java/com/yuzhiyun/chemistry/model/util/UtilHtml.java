@@ -47,7 +47,7 @@ public class UtilHtml {
             if (null != drawable)
 
                 //由于显示的图片太小，所以我把它的长宽都变大3倍
-                drawable.setBounds(0, 0, drawable.getIntrinsicWidth() * 5, drawable.getIntrinsicHeight() * 5);
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth() * 6, drawable.getIntrinsicHeight() * 6);
             Log.e("getDrawable", source);
             return drawable;
         }

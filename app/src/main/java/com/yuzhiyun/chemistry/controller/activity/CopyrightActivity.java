@@ -1,17 +1,12 @@
-package com.yuzhiyun.chemistry.view.activity;
+package com.yuzhiyun.chemistry.controller.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,8 +14,8 @@ import android.widget.TextView;
 
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.util.toast;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
-import com.yuzhiyun.chemistry.view.fragment.BigPictureFragment;
+import com.yuzhiyun.chemistry.controller.base.BaseActivity;
+import com.yuzhiyun.chemistry.controller.fragment.BigPictureFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package com.yuzhiyun.chemistry.view.base;
+package com.yuzhiyun.chemistry.controller.base;
 
 import android.content.Context;
 import android.os.Bundle;

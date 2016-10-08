@@ -1,17 +1,15 @@
-package com.yuzhiyun.chemistry.view.activity;
+package com.yuzhiyun.chemistry.controller.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yuzhiyun.chemistry.R;
+import com.yuzhiyun.chemistry.controller.base.BaseActivity;
 import com.yuzhiyun.chemistry.model.proxy.UserProxy;
 import com.yuzhiyun.chemistry.model.util.toast;
-import com.yuzhiyun.chemistry.view.base.BaseActivity;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, UserProxy.ILoginListener {
 
