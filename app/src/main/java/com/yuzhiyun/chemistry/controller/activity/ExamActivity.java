@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -273,10 +274,10 @@ public class ExamActivity extends AppCompatActivity {
 
                 File file = new File(filePath);
 //                如果文件已经存在，删除掉
-                Log.i("file exist",file.exists()+"");
+//                Log.i("file exist",file.exists()+"");
                 if(file.exists())
                     file.delete();
-                Log.i("file exist",file.exists()+"");
+//                Log.i("file exist",file.exists()+"");
 //                Toast.makeText(ExamActivity.this, "截屏以及存在吗  "+file.exists(), Toast.LENGTH_SHORT).show();
 
                 FileOutputStream os = new FileOutputStream(file);
@@ -284,14 +285,34 @@ public class ExamActivity extends AppCompatActivity {
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, os);
                 os.flush();
                 os.close();
-                shareToFriend(file);
+                showShareChooser(file);
+//                shareToFriend(file);
 //                shareToWeiXinFriendGroup(ExamActivity.this,file,"帮我做做这道题呗！");
 
             } catch (Exception e) {
                 Log.e("Exception",e.toString());
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(ExamActivity.this);
+                builder.setMessage("抱歉，截屏出错 "+e.toString());
+                builder.create().show();
+
             }
         }
     }
+
+    /**
+     * 弹出分享选择对话框
+     * @param file
+     */
+    private void showShareChooser(File file) {
+        Uri uri = Uri.fromFile(file);
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.setType("image/jpeg");
+        ExamActivity.this.startActivity(Intent.createChooser(shareIntent, "截屏分享到~~"));
+    }
+
     /**
      * 微信分享到朋友圈(单张图片及描述)
      * */
