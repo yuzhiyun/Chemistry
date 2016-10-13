@@ -35,4 +35,6 @@ public class CONSTANT {
             "judgementQuestion"};
     public static String BMOB_APP_ID="a1a600ee66c4e8af2871fdbe17cf881b";
     public static List<User> userList;
+    public static int chapter=0;
+
 }

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="题目"
                 android:textColor="@color/text_color"
-                android:textSize="30dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/tvAnswer"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-                android:background="@color/primary"
+                android:background="@drawable/btn_back_circle"
                 android:text="显示答案"
 
                 android:textColor="@color/white"

@@ -51,9 +51,10 @@ public class ChaptersActivity extends BaseActivity implements AdapterView.OnItem
         startActivity(position);
     }
     void startActivity(int position){
-        Bundle bundle=new Bundle();
-        bundle.putInt(KEY_CHAPTER, position);
-        intent.putExtras(bundle);
+//        Bundle bundle=new Bundle();
+//        bundle.putInt(KEY_CHAPTER, position);
+//        intent.putExtras(bundle);
+        CONSTANT.chapter=position;
         startActivity(intent);
         ///
     }

@@ -1,5 +1,6 @@
 package com.yuzhiyun.chemistry.controller.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -82,11 +83,15 @@ public class NoChoiceExerciseFragment extends Fragment implements View.OnClickLi
         String b = noChoiceExercise.getAnswer().replace("\\n", "\n").replace("\\t", "\t");
 //数据库中的数据应该先写\n再写\t
         //如果是判断题，0代表错误，1代表正确
-        if (4 == type)
-            if (b.equals("0"))
+        if (1 == type)
+            if (b.equals("0")) {
                 tvAnswer.setText("错");
-            else
+                tvAnswer.setTextColor(Color.RED);
+            }
+            else{
                 tvAnswer.setText("对");
+                tvAnswer.setTextColor(Color.GREEN);
+            }
         else
             tvAnswer.setText("" + b);
         String c = "name\\nname";
