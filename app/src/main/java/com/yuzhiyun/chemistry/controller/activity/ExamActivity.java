@@ -235,6 +235,7 @@ public class ExamActivity extends AppCompatActivity {
                 }
             });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_exam, menu);
@@ -257,29 +258,25 @@ public class ExamActivity extends AppCompatActivity {
     /**
      * 截屏，并保存到SD卡根目录
      */
-    public void screenshot()
-    {
+    public void screenshot() {
         // 获取屏幕
         View dView = getWindow().getDecorView();
         dView.setDrawingCacheEnabled(true);
         dView.buildDrawingCache();
         Bitmap bmp = dView.getDrawingCache();
-        if (bmp != null)
-        {
+        if (bmp != null) {
             try {
                 // 获取内置SD卡路径
                 String sdCardPath = Environment.getExternalStorageDirectory().getPath();
                 // 图片文件路径
                 String filePath = sdCardPath + File.separator + "screenshot.png";
-
                 File file = new File(filePath);
 //                如果文件已经存在，删除掉
 //                Log.i("file exist",file.exists()+"");
-                if(file.exists())
+                if (file.exists())
                     file.delete();
 //                Log.i("file exist",file.exists()+"");
 //                Toast.makeText(ExamActivity.this, "截屏以及存在吗  "+file.exists(), Toast.LENGTH_SHORT).show();
-
                 FileOutputStream os = new FileOutputStream(file);
                 //压缩至一个输出流，质量100，指定类型PNG
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, os);
@@ -290,10 +287,10 @@ public class ExamActivity extends AppCompatActivity {
 //                shareToWeiXinFriendGroup(ExamActivity.this,file,"帮我做做这道题呗！");
 
             } catch (Exception e) {
-                Log.e("Exception",e.toString());
+                Log.e("Exception", e.toString());
 
-                AlertDialog.Builder builder=new AlertDialog.Builder(ExamActivity.this);
-                builder.setMessage("抱歉，截屏出错 "+e.toString());
+                AlertDialog.Builder builder = new AlertDialog.Builder(ExamActivity.this);
+                builder.setMessage("抱歉，截屏出错 " + e.toString());
                 builder.create().show();
 
             }
@@ -302,6 +299,7 @@ public class ExamActivity extends AppCompatActivity {
 
     /**
      * 弹出分享选择对话框
+     *
      * @param file
      */
     private void showShareChooser(File file) {
@@ -309,13 +307,13 @@ public class ExamActivity extends AppCompatActivity {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        shareIntent.setType("image/jpeg");
         ExamActivity.this.startActivity(Intent.createChooser(shareIntent, "截屏分享到~~"));
+        shareIntent.setType("image/jpeg");
     }
 
     /**
      * 微信分享到朋友圈(单张图片及描述)
-     * */
+     */
     public static void shareToWeiXinFriendGroup(Context context, File file, String description) throws Exception {
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI");
@@ -342,6 +340,7 @@ public class ExamActivity extends AppCompatActivity {
 
     /**
      * 分享到微信朋友
+     *
      * @param file
      */
     private void shareToFriend(File file) {

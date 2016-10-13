@@ -26,7 +26,8 @@ public class UtilHtml {
         StringBuilder html = new StringBuilder();
         for (int i = 0; i < tokens.length; i++)
             //约定图片的文件名以/开头，然后叠加到html中
-            if (tokens[i].charAt(0) == '/')
+             if("".equals(tokens[i]));
+            else if (tokens[i].charAt(0) == '/')
                 html.append("<img src=\"" +  IMG_PATH+ tokens[i] + "\"/>");
             else {
                 html.append(tokens[i]);
