@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yuzhiyun.chemistry.R;
 import com.yuzhiyun.chemistry.model.ExamActivityController;
@@ -28,10 +29,8 @@ import com.yuzhiyun.chemistry.model.entity.bmobEntity.Record;
 import com.yuzhiyun.chemistry.model.entity.bmobEntity.User;
 import com.yuzhiyun.chemistry.model.util.CONSTANT;
 import com.yuzhiyun.chemistry.model.util.toast;
-
 import java.io.File;
 import java.io.FileOutputStream;
-
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.listener.SaveListener;
@@ -261,6 +260,9 @@ public class ExamActivity extends AppCompatActivity {
     public void screenshot() {
         // 获取屏幕
         View dView = getWindow().getDecorView();
+        //清空缓存，如果不清空缓存，在同一个activity下多次截屏是得到同一张图片，
+        // 只有退出该activity后重新截屏才能得到新的截屏
+        dView.destroyDrawingCache();
         dView.setDrawingCacheEnabled(true);
         dView.buildDrawingCache();
         Bitmap bmp = dView.getDrawingCache();
@@ -276,6 +278,7 @@ public class ExamActivity extends AppCompatActivity {
                 if (file.exists())
                     file.delete();
 //                Log.i("file exist",file.exists()+"");
+//                Toast.makeText(ExamActivity.this, "", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(ExamActivity.this, "截屏以及存在吗  "+file.exists(), Toast.LENGTH_SHORT).show();
                 FileOutputStream os = new FileOutputStream(file);
                 //压缩至一个输出流，质量100，指定类型PNG
@@ -307,8 +310,8 @@ public class ExamActivity extends AppCompatActivity {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.setType("image/*");
         ExamActivity.this.startActivity(Intent.createChooser(shareIntent, "截屏分享到~~"));
-        shareIntent.setType("image/jpeg");
     }
 
     /**
