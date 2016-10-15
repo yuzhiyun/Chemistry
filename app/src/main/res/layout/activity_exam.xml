@@ -22,6 +22,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
             <TextView
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:text="章节"
                 android:textColor="@color/white"

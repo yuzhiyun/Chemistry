@@ -10,6 +10,7 @@
     tools:context=".controller.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -123,6 +124,7 @@
             android:layout_gravity="right"/>
 
         <android.support.design.widget.FloatingActionButton
+
             android:id="@+id/fabAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

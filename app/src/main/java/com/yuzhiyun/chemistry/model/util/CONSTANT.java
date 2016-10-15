@@ -10,8 +10,8 @@ import java.util.List;
 public class CONSTANT {
 //    章
     public static String[] array_data = {
-            "第一章 电解质溶液",
-            "第二章 缓冲溶液"
+            "第一章 绪论",
+            "第二章 稀溶液的依数性"
 //            "第三章 酸碱滴定法",
 //            "第四章 化学反应热及化学反应的方向及限度",
 //            "第五章 化学反应速率",
